@@ -6,7 +6,12 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
-        child: Column(),
+        child: Column(children: <Widget>[
+          Row(children: <Widget>[
+            Container(),
+            Container()
+          ],)
+        ],),
       ),
     );
   }

@@ -1,0 +1,40 @@
+name: medica
+description: A new Flutter application.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  sqflite:
+  path:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/backgr-01.png
+    - images/log-01.png
+
+  fonts:
+     - family: BadScript
+       fonts:
+         - asset: fonts/BadScript-Regular.ttf
+     - family: Bellota
+       fonts:
+         - asset: fonts/Bellota-Regular.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages

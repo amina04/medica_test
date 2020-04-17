@@ -9,15 +9,18 @@ class Menu extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Row(
-              children: <Widget>[Container(
-                child: Column(
-                  children: <Widget>[
-                    Text('icon1'),
-                    Text('icon1'),
-
-                  ],
+              children: <Widget>[
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      Text('chooofi tra akatbi nti f text 2 em hhh'),
+                      Text('icon1'),
+                      Text('new text'),
+                    ],
+                  ),
                 ),
-              ), Container()],
+                Container()
+              ],
             )
           ],
         ),

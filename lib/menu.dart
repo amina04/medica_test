@@ -16,6 +16,7 @@ class Menu extends StatelessWidget {
                       Text('chooofi tra akatbi nti f text 2 em hhh'),
                       Text('icon1'),
                       Text('new text'),
+                      Text('new text2'),
                     ],
                   ),
                 ),

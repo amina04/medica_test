@@ -15,6 +15,7 @@ class Menu extends StatelessWidget {
                     children: <Widget>[
                       Text('chooofi tra akatbi nti f text 2 em hhh'),
                       Text('icon1'),
+                      Text('new text'),
                     ],
                   ),
                 ),

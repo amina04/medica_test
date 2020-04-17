@@ -13,7 +13,7 @@ class Menu extends StatelessWidget {
                 Container(
                   child: Column(
                     children: <Widget>[
-                      Text('chooofi tra akatbi nti f text 2 em'),
+                      Text('chooofi tra akatbi nti f text 2 em hhh'),
                       Text('icon1'),
                     ],
                   ),

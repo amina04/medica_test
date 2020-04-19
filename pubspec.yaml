@@ -19,8 +19,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/backgr-01.png
-    - images/log-01.png
+    - images/
 
   fonts:
      - family: BadScript

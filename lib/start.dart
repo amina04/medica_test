@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'menu.dart';
 
 class Start extends StatelessWidget {
   @override
@@ -55,7 +56,11 @@ class Start extends StatelessWidget {
               height: 30.0,
               margin: EdgeInsets.only(bottom: 30.0),
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Menu();
+                  }));
+                },
                 padding: EdgeInsets.all(0.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(80.0)),

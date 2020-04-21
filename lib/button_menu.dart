@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 
 class button_menu extends StatelessWidget {
-  button_menu({@required this.nom_image, @required this.label});
+  button_menu(
+      {@required this.nom_image, @required this.label, @required this.ontap});
   final String nom_image;
   final String label;
+  final Function ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: ontap,
       child: Padding(
         padding: EdgeInsets.all(1.0),
         child: Card(
           margin: EdgeInsets.all(9.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          ),
 
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

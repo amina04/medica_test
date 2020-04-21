@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'menu.dart';
 
 class Start extends StatelessWidget {
+  static String id = 'start_screen';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Expanded(
@@ -26,18 +28,18 @@ class Start extends StatelessWidget {
             ),
           ),
           /*   Expanded(
-            flex: 1,
-            child: Text(
-              'Bienvenu',
-              style: TextStyle(
-                fontSize: 40,
-                fontFamily: 'BadScript',
-                color: Colors.tealAccent,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
+              flex: 1,
+              child: Text(
+                'Bienvenu',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'BadScript',
+                  color: Colors.tealAccent,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
-            ),
-          ),*/
+            ),*/
           Expanded(
             child: Text(
               'nous ne sommes pas seuls mais nous sommes les meilleurs',
@@ -57,9 +59,7 @@ class Start extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 30.0),
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Menu();
-                  }));
+                  Navigator.pushNamed(context, Menu.id);
                 },
                 padding: EdgeInsets.all(0.0),
                 shape: RoundedRectangleBorder(

@@ -10,6 +10,7 @@ class button_menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      //la methode onTap sert a fait action listener
       onTap: ontap,
       child: Padding(
         padding: EdgeInsets.all(1.0),

@@ -19,6 +19,8 @@ void main() {
       ),
       initialRoute: Start.id,
       routes: {
+        //les fenetres ta3 app kamlin w meme kon nzido des fenetres khin lzm ndirohom hna bah nesta3amlo navigator .push
+        //khdemt b const au lieu string bah tol n3odo n3ayto lel constant string w lokan naghalto f 7arf matamchi w manazrbouch nfi9o lel ghalta
         Start.id: (context) => Start(),
         Menu.id: (context) => Menu(),
         Calculer_ladose.id: (context) => Calculer_ladose(),

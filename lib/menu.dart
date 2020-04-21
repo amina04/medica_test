@@ -49,6 +49,7 @@ class Menu extends StatelessWidget {
                         Expanded(
                           //pour eviter de beaucoup texte de button alors je le met d une classe qui s appele buutton_menu et puis juste je l appel et je la donne des propriete
                           child: button_menu(
+                            //une fonction ndiro fiha win 7abin nro7o
                             ontap: () {
                               Navigator.pushNamed(context, Calculer_ladose.id);
                             },

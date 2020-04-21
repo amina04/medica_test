@@ -14,8 +14,10 @@ class button_menu extends StatelessWidget {
       onTap: ontap,
       child: Padding(
         padding: EdgeInsets.all(1.0),
+        //je fais card au lieu container car il a une shadow
         child: Card(
           margin: EdgeInsets.all(9.0),
+          //pour radius
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
           ),

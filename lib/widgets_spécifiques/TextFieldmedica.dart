@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constantes.dart';
+import '../constantes.dart';
 
 //pour ne pas chaque fois cree texte field avec son style w ray7in nakhadmo bih bzf dert
 // had style wmb3d twli t3aytilo comme une widget w takatbi le nom brk lel prprite label

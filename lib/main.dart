@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:medica/calculer_la_dose_screen.dart';
-import 'package:medica/debut_journe_screen.dart';
-import 'package:medica/fin_journe_screen.dart';
-import 'package:medica/list_med_screen.dart';
-import 'package:medica/menu.dart';
+import 'package:medica/view/calculer_la_dose_screen.dart';
+import 'package:medica/view/debut_journe_screen.dart';
+import 'package:medica/view/fin_journe_screen.dart';
+import 'package:medica/view/list_med_screen.dart';
+import 'package:medica/view/menu.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'start.dart';
+import 'view/start.dart';
 
 void main() {
   runApp(
     MaterialApp(
       theme: ThemeData.light().copyWith(
-          textTheme: TextTheme(body1: TextStyle(color: Colors.black))),
+        textTheme: TextTheme(
+          body1: TextStyle(color: Colors.black),
+        ),
+      ),
       home: Scaffold(
         backgroundColor: Colors.white,
         body: Start(),

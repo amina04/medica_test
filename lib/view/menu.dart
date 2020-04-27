@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:medica/calculer_la_dose_screen.dart';
-import 'package:medica/fin_journe_screen.dart';
-import 'package:medica/list_med_screen.dart';
+import 'package:medica/view/calculer_la_dose_screen.dart';
+import 'package:medica/view/fin_journe_screen.dart';
+import 'package:medica/view/list_med_screen.dart';
 
-import 'button_menu.dart';
+import '../widgets_spécifiques/button_menu.dart';
 import 'debut_journe_screen.dart';
 
 class Menu extends StatelessWidget {

@@ -5,3 +5,5 @@ const klabelTextStyle = TextStyle(
 const klabelresultatStyle =
     TextStyle(fontSize: 17, color: Colors.black, fontWeight: FontWeight.w500);
 const kappBarTextStyle = TextStyle(fontSize: 22, color: Colors.white);
+const kbuttonTextStyle =
+    TextStyle(fontSize: 16.4, color: Colors.white, fontWeight: FontWeight.w700);

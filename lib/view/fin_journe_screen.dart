@@ -32,7 +32,7 @@ class _Fin_journeeState extends State<Fin_journee> {
                     style: klabelresultatStyle,
                   ),
                   SizedBox(
-                    width: 30.0,
+                    width: 29.0,
                   ),
                   // TODO: create a dropdown menu from a data base
                   DropdownButton<String>(items: null, onChanged: null),

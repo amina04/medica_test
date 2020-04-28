@@ -41,9 +41,12 @@ class _Fin_journeeState extends State<Fin_journee> {
             ),
           ),
           Card(
-            margin: EdgeInsets.symmetric(vertical: 80.0),
+            margin: EdgeInsets.symmetric(vertical: 80.0, horizontal: 4.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 48.0, 0, 48.0),
+              padding: const EdgeInsets.fromLTRB(15.0, 48.0, 0, 48.0),
               child: Column(
                 children: <Widget>[
                   Container(

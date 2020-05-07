@@ -7,3 +7,9 @@ const klabelresultatStyle =
 const kappBarTextStyle = TextStyle(fontSize: 22, color: Colors.white);
 const kbuttonTextStyle =
     TextStyle(fontSize: 16.4, color: Colors.white, fontWeight: FontWeight.w700);
+const ktitleliststyle =
+    TextStyle(fontSize: 18, color: Colors.black54, fontWeight: FontWeight.w500);
+const ksubtitleliststyle =
+    TextStyle(fontSize: 17, color: Colors.black54, fontWeight: FontWeight.w500);
+const kresultliststyle =
+    TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w400);

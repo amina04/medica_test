@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:medica/view/add_med_screen.dart';
 import 'package:medica/view/calculer_la_dose_screen.dart';
 import 'package:medica/view/debut_journe_screen.dart';
 import 'package:medica/view/fin_journe_screen.dart';
 import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/view/menu.dart';
+import 'package:medica/view/medicament_details_screen.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'view/start.dart';
@@ -30,6 +32,8 @@ void main() {
         List_med.id: (context) => List_med(),
         Debut_journee.id: (context) => Debut_journee(),
         Fin_journee.id: (context) => Fin_journee(),
+        Detail_med.id: (context) => Detail_med(),
+        Add_med.id: (context) => Add_med(),
       },
     ),
   );

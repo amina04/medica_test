@@ -18,7 +18,6 @@ class _Add_med extends State<Add_med> {
           child: Column(
             children: <Widget>[
               Textfieldmedica(label: 'Nom de médicament'),
-
             ],
           ),
         ),

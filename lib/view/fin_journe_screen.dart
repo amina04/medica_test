@@ -14,6 +14,7 @@ class _Fin_journeeState extends State<Fin_journee> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GradientAppBar(
+        centerTitle: true,
         title: Text('Fin de journée', style: kappBarTextStyle),
         gradient:
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),

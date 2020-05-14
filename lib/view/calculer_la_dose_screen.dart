@@ -21,6 +21,7 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: GradientAppBar(
+        centerTitle: true,
         title: Text(
           'Calculer la dose',
           style: kappBarTextStyle,
@@ -55,7 +56,7 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
                     'Patient',
                   ),
                   content: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 70.0),
+                    padding: const EdgeInsets.symmetric(vertical: 15.0),
                     child: Step1(),
                   ),
                   isActive: _currentStep >= 0,

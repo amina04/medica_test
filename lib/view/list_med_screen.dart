@@ -15,6 +15,7 @@ class _List_medState extends State<List_med> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GradientAppBar(
+        centerTitle: true,
         title: Text('Liste des médicaments', style: kappBarTextStyle),
         gradient:
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),

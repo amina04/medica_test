@@ -13,10 +13,11 @@ class button_menu extends StatelessWidget {
       //la methode onTap sert a fait action listener
       onTap: ontap,
       child: Padding(
-        padding: EdgeInsets.all(1.0),
+        padding: EdgeInsets.all(9.0),
         //je fais card au lieu container car il a une shadow
         child: Card(
-          margin: EdgeInsets.all(9.0),
+          elevation: 10.0,
+          margin: EdgeInsets.all(2.0),
           //pour radius
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),
@@ -26,10 +27,10 @@ class button_menu extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Expanded(
-                flex: 3,
+                flex: 2,
                 child: Image.asset('images/$nom_image.png'),
               ),
-              SizedBox(height: 15.0),
+              SizedBox(height: 10.0),
               Expanded(
                 flex: 1,
                 child: Text(
@@ -40,12 +41,6 @@ class button_menu extends StatelessWidget {
               )
             ],
           ),
-
-          // margin: EdgeInsets.all(15),
-          //  decoration: BoxDecoration(
-          //  borderRadius: BorderRadius.circular(15),
-          //   color: Colors.white,
-          // ),
         ),
       ),
     );

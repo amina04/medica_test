@@ -4,7 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:medica/view/calculer_la_dose_screen.dart';
 import 'package:medica/view/fin_journe_screen.dart';
 import 'package:medica/view/list_med_screen.dart';
-
+import 'package:medica/widgets_sp%C3%A9cifiques/top_bar.dart';
+import 'package:medica/constantes.dart';
 import '../widgets_spécifiques/button_menu.dart';
 import 'debut_journe_screen.dart';
 
@@ -13,37 +14,23 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
           Expanded(
             flex: 1,
             child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/menu.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Center(
-                child: Text('Medica',
-                    style: TextStyle(
-                      fontFamily: 'Bellota',
-                      color: Colors.white,
-                      fontSize: 48.0,
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.bold,
-                    )),
-              ),
+              child: TopBar(),
             ),
           ),
           Expanded(
             flex: 2,
             child: Container(
-              color: Colors.grey.shade200,
               padding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 15.0),
               child: Column(
                 children: <Widget>[
                   Expanded(
+                    flex: 2,
                     child: Row(
                       children: <Widget>[
                         Expanded(
@@ -70,6 +57,7 @@ class Menu extends StatelessWidget {
                     ),
                   ),
                   Expanded(
+                    flex: 2,
                     child: Row(
                       children: <Widget>[
                         Expanded(
@@ -91,6 +79,39 @@ class Menu extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Card(
+                      elevation: 10.0,
+                      margin: EdgeInsets.all(9.0),
+                      //pour radius
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.history,
+                            color: Colors.tealAccent,
+                            size: 48.0,
+                          ),
+                          SizedBox(
+                            width: 40.0,
+                          ),
+                          Text(
+                            'Histoire',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.w400),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

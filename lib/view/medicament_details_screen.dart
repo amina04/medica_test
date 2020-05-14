@@ -14,6 +14,7 @@ class _Detail_med extends State<Detail_med> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GradientAppBar(
+        centerTitle: true,
         title: Text('Détails de médicament ', style: kappBarTextStyle),
         gradient:
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),

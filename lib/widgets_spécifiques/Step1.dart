@@ -15,6 +15,10 @@ class _Step1State extends State<Step1> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        Textfieldmedica(label: 'Nom'),
+        SizedBox(height: 10.0),
+        Textfieldmedica(label: 'Prénom'),
+        SizedBox(height: 15.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,7 +72,7 @@ class _Step1State extends State<Step1> {
           ],
         ),
         SizedBox(
-          height: 15.0,
+          height: 5.0,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -121,7 +125,7 @@ class _Step1State extends State<Step1> {
           ],
         ),
         SizedBox(
-          height: 15.0,
+          height: 5.0,
         ),
         //une texte field spécifique khdamto w dertp fi class bah tol n3aytolo w nevitiw bzf texte
         Textfieldmedica(label: 'Surface coporelle'),

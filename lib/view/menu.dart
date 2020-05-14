@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:medica/view/calculer_la_dose_screen.dart';
 import 'package:medica/view/fin_journe_screen.dart';
+import 'package:medica/view/list_history_screen.dart';
 import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/top_bar.dart';
 import 'package:medica/constantes.dart';
@@ -83,34 +84,39 @@ class Menu extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Card(
-                      elevation: 10.0,
-                      margin: EdgeInsets.all(9.0),
-                      //pour radius
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, list_history.id);
+                      },
+                      child: Card(
+                        elevation: 10.0,
+                        margin: EdgeInsets.all(9.0),
+                        //pour radius
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
 
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.history,
-                            color: Colors.tealAccent,
-                            size: 48.0,
-                          ),
-                          SizedBox(
-                            width: 40.0,
-                          ),
-                          Text(
-                            'Histoire',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w400),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              Icons.history,
+                              color: Colors.tealAccent,
+                              size: 48.0,
+                            ),
+                            SizedBox(
+                              width: 40.0,
+                            ),
+                            Text(
+                              'Histoire',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w400),
+                              textAlign: TextAlign.center,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -12,11 +12,40 @@ class List_med extends StatefulWidget {
 
 class _List_medState extends State<List_med> {
   @override
+  Icon cusIcon = Icon(Icons.search);
+  Widget cusSearchBar = Text(
+    'Liste des médicaments',
+    style: kappBarTextStyle,
+  );
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GradientAppBar(
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              setState(() {
+                if (this.cusIcon.icon == Icons.search) {
+                  this.cusIcon = Icon(Icons.cancel);
+                  this.cusSearchBar = TextField(
+                    decoration:
+                        InputDecoration(hintText: 'Chercher un médicament'),
+                    textInputAction: TextInputAction.go,
+                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                  );
+                } else {
+                  this.cusIcon = Icon(Icons.search);
+                  this.cusSearchBar = Text(
+                    'Liste des médicaments',
+                    style: kappBarTextStyle,
+                  );
+                }
+              });
+            },
+            icon: cusIcon,
+          ),
+        ],
         centerTitle: true,
-        title: Text('Liste des médicaments', style: kappBarTextStyle),
+        title: cusSearchBar,
         gradient:
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),
       ),

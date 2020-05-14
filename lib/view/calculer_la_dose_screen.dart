@@ -17,15 +17,43 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
   int _currentStep = 0;
 
   String current_item = 'med1';
+  //pour search
+  Icon cusIcon = Icon(Icons.search);
+  Widget cusSearchBar = Text(
+    'Calculer la dose',
+    style: kappBarTextStyle,
+  );
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: GradientAppBar(
         centerTitle: true,
-        title: Text(
-          'Calculer la dose',
-          style: kappBarTextStyle,
-        ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              setState(() {
+                if (this.cusIcon.icon == Icons.search) {
+                  this.cusIcon = Icon(Icons.cancel);
+                  this.cusSearchBar = TextField(
+                    decoration:
+                        InputDecoration(hintText: 'Chercher un patient'),
+                    textInputAction: TextInputAction.go,
+                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                  );
+                } else {
+                  this.cusIcon = Icon(Icons.search);
+                  this.cusSearchBar = Text(
+                    'Calculer la dose',
+                    style: kappBarTextStyle,
+                  );
+                }
+              });
+            },
+            icon: cusIcon,
+          ),
+        ],
+        title: cusSearchBar,
         gradient:
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),
       ),

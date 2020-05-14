@@ -61,7 +61,7 @@ class _Detail_patient extends State<Detail_patient> {
                   ),
                   Text(
                     '24',
-                    style: ksubtitleliststyle,
+                    style: kresultliststyle,
                   ),
                 ],
               ),
@@ -79,7 +79,7 @@ class _Detail_patient extends State<Detail_patient> {
                   ),
                   Text(
                     ' 22/02/2020',
-                    style: ksubtitleliststyle,
+                    style: kresultliststyle,
                   ),
                 ],
               ),
@@ -107,7 +107,7 @@ class _Detail_patient extends State<Detail_patient> {
               child: Row(
                 children: <Widget>[
                   Text(
-                    'reliquats:',
+                    'Reliquats:',
                     style: ksubtitleliststyle,
                   ),
                   SizedBox(

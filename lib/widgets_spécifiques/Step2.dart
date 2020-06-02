@@ -24,6 +24,22 @@ class _Step2State extends State<Step2> {
           height: 15.0,
         ),
         Textfieldmedica(label: 'Réduction'),
+        SizedBox(
+          height: 15.0,
+        ),
+        Row(
+          children: <Widget>[
+            Text(
+              'Sélectionner la poche ',
+              style: klabelTextStyle,
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            // TODO: create a dropdown menu from a data base
+            DropdownButton<String>(items: null, onChanged: null),
+          ],
+        ),
       ],
     );
   }

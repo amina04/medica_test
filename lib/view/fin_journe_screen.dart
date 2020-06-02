@@ -20,151 +20,114 @@ class _Fin_journeeState extends State<Fin_journee> {
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),
       ),
       //Navigateur Bar
-      body: Column(
-        children: <Widget>[
-          Card(
+      body: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (_, index) {
+          return Card(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'choisis un médicament',
-                    style: klabelresultatStyle,
-                  ),
-                  SizedBox(
-                    width: 29.0,
-                  ),
-                  // TODO: create a dropdown menu from a data base
-                  DropdownButton<String>(items: null, onChanged: null),
-                ],
+              padding: const EdgeInsets.all(12.0),
+              child: ListTile(
+                title: Text(
+                  'médicament $index',
+                  style: kresultliststyle,
+                ),
+                //un sous titre
+                subtitle: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'La quantité consommée : ',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          '20 ',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          ' flacons',
+                          style: klabelTextStyle,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'reliquats',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          '5',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          'flacons ',
+                          style: klabelTextStyle,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Stabilités',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          '48',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          'heures',
+                          style: klabelTextStyle,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Prix des reliquats jetées',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          '48',
+                          style: klabelTextStyle,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          'DA',
+                          style: klabelTextStyle,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Card(
-            margin: EdgeInsets.symmetric(vertical: 80.0, horizontal: 4.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(31.0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(15.0, 48.0, 0, 48.0),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'La quantité consommée : ',
-                            style: klabelTextStyle,
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                '5',
-                                style: klabelresultatStyle,
-                              ),
-                              Text(
-                                'flacons',
-                                style: klabelresultatStyle,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'reliquats et les stabilités : ',
-                            style: klabelTextStyle,
-                          ),
-                        ),
-                        Container(
-                          child: Column(
-                            //relicat
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Relicats :',
-                                    style: klabelresultatStyle,
-                                  ),
-                                  Text(
-                                    '5',
-                                    style: klabelresultatStyle,
-                                  ),
-                                  Text(
-                                    'flacons',
-                                    style: klabelresultatStyle,
-                                  ),
-                                ],
-                              ),
-                              //stabilite
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Stabilités :',
-                                    style: klabelresultatStyle,
-                                  ),
-                                  Text(
-                                    '48',
-                                    style: klabelresultatStyle,
-                                  ),
-                                  Text(
-                                    'heures ',
-                                    style: klabelresultatStyle,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'le prix des reliquats jetés : ',
-                            style: klabelTextStyle,
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                '5623.15',
-                                style: klabelresultatStyle,
-                              ),
-                              Text(
-                                'DA',
-                                style: klabelresultatStyle,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

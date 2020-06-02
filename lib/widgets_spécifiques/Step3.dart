@@ -74,6 +74,20 @@ class _Step3State extends State<Step3> {
             Text('ml', style: klabelresultatStyle),
           ],
         ),
+        SizedBox(
+          height: 40.0,
+        ),
+        RaisedButton(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
+          color: Colors.lightBlueAccent,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: Text(
+            "sauvegarder",
+            style: kbuttonTextStyle,
+          ),
+          onPressed: () {},
+        ),
       ],
     );
   }

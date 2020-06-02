@@ -21,41 +21,93 @@ class _Debut_journeeState extends State<Debut_journee> {
       ),
       //Navigateur Bar
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const SizedBox(height: 30),
-            ButtonTheme(
-              height: 60,
-              minWidth: 317,
-              child: RaisedButton(
-                color: Colors.lightBlueAccent,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                child: Text(
-                  "La liste des médicaments périmés",
-                  style: kbuttonTextStyle,
+        child: ListView.builder(
+            itemCount: 5,
+            itemBuilder: (_, index) {
+              return Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: ListTile(
+                    title: Text(
+                      'médicament $index',
+                      style: kresultliststyle,
+                    ),
+                    //un sous titre
+                    subtitle: Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'Etat :',
+                              style: klabelTextStyle,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              'périmée',
+                              style: klabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'date :',
+                              style: klabelTextStyle,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              '19/10/2019',
+                              style: klabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'Fellahi',
+                              style: klabelTextStyle,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              'Mouna',
+                              style: klabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'Quantité :',
+                              style: klabelTextStyle,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              '20',
+                              style: klabelTextStyle,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              'ml',
+                              style: klabelTextStyle,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                onPressed: () {},
-              ),
-            ),
-            const SizedBox(height: 30),
-            ButtonTheme(
-              height: 60,
-              minWidth: 300,
-              child: RaisedButton(
-                color: Colors.lightBlueAccent,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                child: Text(
-                  "La liste des médicaments non périmés",
-                  style: kbuttonTextStyle,
-                ),
-                onPressed: () {},
-              ),
-            ),
-          ],
-        ),
+              );
+            }),
       ),
     );
   }

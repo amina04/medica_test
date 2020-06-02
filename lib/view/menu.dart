@@ -66,7 +66,7 @@ class Menu extends StatelessWidget {
                             ontap: () {
                               Navigator.pushNamed(context, Debut_journee.id);
                             },
-                            label: 'Début de journée',
+                            label: 'Etat des reliquats',
                             nom_image: 'energy-01',
                           ),
                         ),
@@ -75,7 +75,7 @@ class Menu extends StatelessWidget {
                             ontap: () {
                               Navigator.pushNamed(context, Fin_journee.id);
                             },
-                            label: 'Fin de journée',
+                            label: 'Etat des médicaments utilisée',
                             nom_image: 'tired',
                           ),
                         ),
@@ -108,7 +108,7 @@ class Menu extends StatelessWidget {
                               width: 40.0,
                             ),
                             Text(
-                              'Histoire',
+                              'Historique',
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.black54,

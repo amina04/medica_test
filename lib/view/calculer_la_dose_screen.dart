@@ -94,7 +94,7 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
                 ),
                 new Step(
                   title: new Text(
-                    'Medication',
+                    'Médicament',
                   ),
                   content: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 70.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constantes.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/TextFieldmedica.dart';
+import 'package:medica/controller/calcul_step1_controller.dart';
 
 class Step1 extends StatefulWidget {
   @override
@@ -10,14 +11,30 @@ class Step1 extends StatefulWidget {
 class _Step1State extends State<Step1> {
   int height = 180;
   int weight = 60;
+
+  //final surface_coporelle_ctrl = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed. pour allouer la ram
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Textfieldmedica(label: 'Nom'),
+        Textfieldmedica(
+          label: 'Nom',
+          controller: nom_ctrl,
+        ),
         SizedBox(height: 10.0),
-        Textfieldmedica(label: 'Prénom'),
+        Textfieldmedica(
+          label: 'Prénom',
+          controller: prenom_ctrl,
+        ),
         SizedBox(height: 15.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,6 +80,7 @@ class _Step1State extends State<Step1> {
                     onChanged: (double newValue) {
                       setState(() {
                         height = newValue.round();
+                        print("$height");
                       });
                     },
                   ),
@@ -128,7 +146,10 @@ class _Step1State extends State<Step1> {
           height: 5.0,
         ),
         //une texte field spécifique khdamto w dertp fi class bah tol n3aytolo w nevitiw bzf texte
-        Textfieldmedica(label: 'Surface coporelle'),
+        Textfieldmedica(
+          label: 'Surface coporelle',
+          controller: surface_coporelle_ctrl,
+        ),
       ],
     );
   }

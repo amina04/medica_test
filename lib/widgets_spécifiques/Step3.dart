@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:medica/controller/foncions_calculs.dart';
 import '../constantes.dart';
+import 'package:medica/controller/calcul_step1_controller.dart';
 
 class Step3 extends StatefulWidget {
   @override
@@ -7,8 +9,11 @@ class Step3 extends StatefulWidget {
 }
 
 class _Step3State extends State<Step3> {
-  int height = 180;
-  int weight = 60;
+  double dose = Dose_a_administrer();
+  double volume = Volume_finale();
+  int nbr_flacon = Nbr_flacon(presentation: 26.3);
+  double reliquat = Reliquat(presentation: 26.3);
+  int poche = ChoisirPoche(cmax: 10, cmin: 1);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +24,7 @@ class _Step3State extends State<Step3> {
             SizedBox(
               width: 20.0,
             ),
-            Text('1522', style: klabelresultatStyle),
+            Text("$dose", style: klabelresultatStyle),
             SizedBox(
               width: 20.0,
             ),
@@ -35,7 +40,7 @@ class _Step3State extends State<Step3> {
             SizedBox(
               width: 20.0,
             ),
-            Text('1522', style: klabelresultatStyle),
+            Text("$volume", style: klabelresultatStyle),
             SizedBox(
               width: 20.0,
             ),
@@ -51,7 +56,7 @@ class _Step3State extends State<Step3> {
             SizedBox(
               width: 20.0,
             ),
-            Text('1522', style: klabelresultatStyle),
+            Text("$nbr_flacon", style: klabelresultatStyle),
             SizedBox(
               width: 20.0,
             ),
@@ -67,7 +72,26 @@ class _Step3State extends State<Step3> {
             SizedBox(
               width: 20.0,
             ),
-            Text('1522', style: klabelresultatStyle),
+            Text("$reliquat", style: klabelresultatStyle),
+            SizedBox(
+              width: 20.0,
+            ),
+            Text('ml', style: klabelresultatStyle),
+          ],
+        ),
+        SizedBox(
+          height: 40.0,
+        ),
+        SizedBox(
+          height: 40.0,
+        ),
+        Row(
+          children: <Widget>[
+            Text('Type de poche :', style: klabelTextStyle),
+            SizedBox(
+              width: 20.0,
+            ),
+            Text("$poche", style: klabelresultatStyle),
             SizedBox(
               width: 20.0,
             ),
@@ -78,16 +102,33 @@ class _Step3State extends State<Step3> {
           height: 40.0,
         ),
         RaisedButton(
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
-          color: Colors.lightBlueAccent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          child: Text(
-            "sauvegarder",
-            style: kbuttonTextStyle,
-          ),
-          onPressed: () {},
-        ),
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
+            color: Colors.lightBlueAccent,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Text(
+              "sauvegarder",
+              style: kbuttonTextStyle,
+            ),
+            onPressed: () {
+              //afficher height
+              // print("$height");
+              return showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    // Retrieve the text the user has entered by using the
+                    // TextEditingController.
+                    content: Row(
+                      children: <Widget>[
+                        Text(nom_ctrl.text),
+                        Text(prenom_ctrl.text),
+                      ],
+                    ),
+                  );
+                },
+              );
+            }),
       ],
     );
   }

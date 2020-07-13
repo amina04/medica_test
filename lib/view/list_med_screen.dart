@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:medica/view/medicament_details_screen.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'add_med_screen.dart';
 
 class List_med extends StatefulWidget {
@@ -12,6 +13,7 @@ class List_med extends StatefulWidget {
 
 class _List_medState extends State<List_med> {
   @override
+  bool medicament_existe = false;
   Icon cusIcon = Icon(Icons.search);
   Widget cusSearchBar = Text(
     'Liste des médicaments',
@@ -29,7 +31,17 @@ class _List_medState extends State<List_med> {
                   this.cusSearchBar = TextField(
                     decoration:
                         InputDecoration(hintText: 'Chercher un médicament'),
-                    textInputAction: TextInputAction.go,
+                    textInputAction: TextInputAction.search,
+                    onSubmitted: (term) {
+                      //si le patient n existe pas on affiche ce alert message
+                      if (medicament_existe == false) {
+                        Alert(
+                                context: context,
+                                title: "Ce médicament n'existe pas",
+                                desc: "vous devez le l'ajouter d'abord.")
+                            .show();
+                      }
+                    },
                     style: TextStyle(color: Colors.white, fontSize: 16.0),
                   );
                 } else {

@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:medica/controller/calcul_step1_controller.dart';
+import 'package:medica/controller/calcul_step2_controller.dart';
+import 'package:medica/controller/foncions_calculs.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/Step2.dart';
 import 'package:medica/constantes.dart';
 import '../widgets_spécifiques/Step3.dart';
 import '../widgets_spécifiques/Step1.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Calculer_ladose extends StatefulWidget {
   static String id = 'Calculer_ladose_screen';
+
   @override
   _Calculer_ladoseState createState() => _Calculer_ladoseState();
 }
@@ -15,6 +20,7 @@ class Calculer_ladose extends StatefulWidget {
 class _Calculer_ladoseState extends State<Calculer_ladose> {
   @override
   int _currentStep = 0;
+  bool patient_existe = false;
 
   String current_item = 'med1';
   //pour search
@@ -36,9 +42,23 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
                 if (this.cusIcon.icon == Icons.search) {
                   this.cusIcon = Icon(Icons.cancel);
                   this.cusSearchBar = TextField(
+                    //controller pour texte field de recherche
+                    controller: chercher_patient_ctrl,
                     decoration:
                         InputDecoration(hintText: 'Chercher un patient'),
-                    textInputAction: TextInputAction.go,
+                    textInputAction: TextInputAction.search,
+                    onSubmitted: (term) {
+                      //si le patient n existe pas on affiche ce alert message
+                      if (patient_existe == false) {
+                        Alert(
+                                context: context,
+                                title: "Ce patient n'existe pas",
+                                desc: "vous devez le l'ajouter d'abord.")
+                            .show();
+                      }
+                      //sinon on remplir les champs par les informations de patients
+                      // TODO: remplir les champs par les infos de patients
+                    },
                     style: TextStyle(color: Colors.white, fontSize: 16.0),
                   );
                 } else {
@@ -71,10 +91,32 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
             child: Stepper(
               type: StepperType.horizontal,
               currentStep: _currentStep,
-              onStepTapped: (int step) => setState(() => _currentStep = step),
-              onStepContinue: _currentStep < 2
+              onStepTapped: (int step) => setState(
+                () => _currentStep = step,
+              ),
+              /* _currentStep < 2
                   ? () => setState(() => _currentStep += 1)
-                  : null,
+                  : null,*/
+              onStepContinue: () {
+                if (_currentStep < 2) {
+                  setState(() => _currentStep += 1);
+                } else {
+                  null;
+                }
+                if (_currentStep == 2) {
+                  print('' + surface_coporelle_ctrl.text);
+                  if (posologie_ctrl.text.isEmpty ||
+                      surface_coporelle_ctrl.text.isEmpty) {
+                    Alert(
+                            context: context,
+                            title: "Erreur",
+                            desc: "vous devez remplir les champs d'abord.")
+                        .show();
+                  }
+                  posologie_ctrl.text = '0.0';
+                  surface_coporelle_ctrl.text = '0.0';
+                }
+              },
               onStepCancel: _currentStep > 0
                   ? () => setState(() => _currentStep -= 1)
                   : null,

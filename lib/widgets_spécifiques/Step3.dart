@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medica/controller/foncions_calculs.dart';
+import 'package:medica/controller/fonctions_calculs.dart';
 import '../constantes.dart';
 import 'package:medica/controller/calcul_step1_controller.dart';
 
@@ -11,8 +11,8 @@ class Step3 extends StatefulWidget {
 class _Step3State extends State<Step3> {
   double dose = Dose_a_administrer();
   double volume = Volume_finale();
-  int nbr_flacon = Nbr_flacon(presentation: 26.3);
-  double reliquat = Reliquat(presentation: 26.3);
+  int nbr_flacon = Nbr_flacon(volume_flacon: 26.3);
+  double reliquat = Reliquat(volume_flacon: 26.3);
   int poche = ChoisirPoche(cmax: 10, cmin: 1);
   @override
   Widget build(BuildContext context) {

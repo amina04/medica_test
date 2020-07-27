@@ -10,11 +10,13 @@ dependencies:
   curved_navigation_bar: ^0.1.2
   animated_text_kit: ^2.0.0
   rflutter_alert: ^1.0.3
+
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
   sqflite:
   path:
+  path_provider:
 
 dev_dependencies:
   flutter_test:

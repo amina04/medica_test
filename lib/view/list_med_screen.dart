@@ -66,7 +66,10 @@ class _List_medState extends State<List_med> {
         onPressed: () {
           Navigator.pushNamed(context, Add_med.id);
         },
-        child: new Icon(Icons.add),
+        child: new Icon(
+          Icons.add,
+          size: 40,
+        ),
         backgroundColor: Colors.lightBlueAccent,
         foregroundColor: Colors.white,
       ),

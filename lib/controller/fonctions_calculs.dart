@@ -42,12 +42,12 @@ double Volume_finale() {
 }
 
 //la fonction qui calcule le nombre des flacons
-int Nbr_flacon({double presentation}) {
+int Nbr_flacon({double volume_flacon}) {
   double volume = Volume_finale();
 
   int nbr_flcn = 0;
-  nbr_flcn = (volume / presentation).round();
-  if ((nbr_flcn * presentation) - volume >= 0) {
+  nbr_flcn = (volume / volume_flacon).round();
+  if ((nbr_flcn * volume_flacon) - volume >= 0) {
     return nbr_flcn;
   } else {
     nbr_flcn + 1;
@@ -56,11 +56,11 @@ int Nbr_flacon({double presentation}) {
 }
 
 //la fonction qui calcule reliquats
-double Reliquat({double presentation}) {
+double Reliquat({double volume_flacon}) {
   double volume = Volume_finale();
-  int nbr_flcn = Nbr_flacon(presentation: presentation);
+  int nbr_flcn = Nbr_flacon(volume_flacon: volume_flacon);
   double reliqat = 0;
-  reliqat = (nbr_flcn * presentation) - volume;
+  reliqat = (nbr_flcn * volume_flacon) - volume;
   String rel = reliqat.toStringAsFixed(2);
 
   reliqat = double.parse(rel);

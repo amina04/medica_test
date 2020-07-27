@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:medica/controller/calcul_step1_controller.dart';
 import 'package:medica/controller/calcul_step2_controller.dart';
-import 'package:medica/controller/foncions_calculs.dart';
+import 'package:medica/controller/fonctions_calculs.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/Step2.dart';
 import 'package:medica/constantes.dart';
 import '../widgets_spécifiques/Step3.dart';

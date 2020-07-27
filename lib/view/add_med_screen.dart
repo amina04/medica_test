@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
+import 'package:medica/model/database.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/TextFieldmedica.dart';
+import 'package:medica/controller/add_med_controller.dart';
+import 'package:medica/model/model_tableaux/medicament.dart';
 
 class Add_med extends StatefulWidget {
   static String id = 'Add_med';
@@ -11,6 +14,8 @@ class Add_med extends StatefulWidget {
 }
 
 class _Add_med extends State<Add_med> {
+  //cree une instance de db class
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +41,17 @@ class _Add_med extends State<Add_med> {
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'Nom de médicament'),
+                  Textfieldmedica(
+                    label: 'Nom de médicament',
+                    controller: nom_med_ctrl,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'Laboratoire'),
+                  Textfieldmedica(
+                    label: 'Laboratoire',
+                    controller: nom_labo_ctrl,
+                  ),
                 ],
               ),
             ),
@@ -65,7 +76,94 @@ class _Add_med extends State<Add_med> {
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'Pésentation'),
+                  Textfieldmedica(
+                    label: 'Pésentation',
+                    controller: presentation_ctrl,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      GestureDetector(
+                        child: Card(
+                          elevation: 5.0,
+                          margin: EdgeInsets.all(2.0),
+                          //pour radius
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+
+                          child: Icon(
+                            Icons.add,
+                            size: 45.0,
+                            color: Colors.teal,
+                          ),
+                        ),
+                        onTap: () {
+                          print('add');
+                          presentation_ctrl.text = ' ';
+                        },
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+              decoration: BoxDecoration(
+                border: Border.all(width: 2.0, color: Colors.tealAccent),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(5.0) //         <--- border radius here
+                    ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'volume de flacon :',
+                    textAlign: TextAlign.center,
+                    style: klabeladdMedStyle,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Textfieldmedica(
+                    label: 'volume de flacon',
+                    controller: volum_flcn_ctrl,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+              decoration: BoxDecoration(
+                border: Border.all(width: 2.0, color: Colors.tealAccent),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(5.0) //         <--- border radius here
+                    ),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'Quantité disponible :',
+                    textAlign: TextAlign.center,
+                    style: klabeladdMedStyle,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Textfieldmedica(
+                    label: 'Quantité disponible',
+                    controller: qte_disponible_ctrl,
+                  ),
                 ],
               ),
             ),
@@ -90,15 +188,24 @@ class _Add_med extends State<Add_med> {
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'C Initiale'),
+                  Textfieldmedica(
+                    label: 'C Initiale',
+                    controller: c_ini_ctrl,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'C Minimale'),
+                  Textfieldmedica(
+                    label: 'C Minimale',
+                    controller: c_min_ctrl,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'C Maximale'),
+                  Textfieldmedica(
+                    label: 'C Maximale',
+                    controller: c_max_ctrl,
+                  ),
                 ],
               ),
             ),
@@ -123,7 +230,10 @@ class _Add_med extends State<Add_med> {
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'Volume aprés péparation'),
+                  Textfieldmedica(
+                    label: 'Volume aprés péparation',
+                    controller: volum_apr_praparation_ctrl,
+                  ),
                 ],
               ),
             ),
@@ -148,7 +258,10 @@ class _Add_med extends State<Add_med> {
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'Prix du mg '),
+                  Textfieldmedica(
+                    label: 'Prix du mg ',
+                    controller: prix_ctrl,
+                  ),
                 ],
               ),
             ),
@@ -173,15 +286,54 @@ class _Add_med extends State<Add_med> {
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'Flacon '),
+                  Textfieldmedica(
+                    label: 'Flacon ',
+                    controller: flacon_ctrl,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'Températeure '),
+                  Textfieldmedica(
+                    label: 'Températeure ',
+                    controller: temperature_ctrl,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
-                  Textfieldmedica(label: 'stabilité'),
+                  Textfieldmedica(
+                    label: 'stabilité',
+                    controller: stabilite_ctrl,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      GestureDetector(
+                        child: Card(
+                          elevation: 5.0,
+                          margin: EdgeInsets.all(2.0),
+                          //pour radius
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+
+                          child: Icon(
+                            Icons.add,
+                            size: 45.0,
+                            color: Colors.teal,
+                          ),
+                        ),
+                        onTap: () {
+                          temperature_ctrl.text = ' ';
+                          stabilite_ctrl.text = ' ';
+                          flacon_ctrl.text = ' ';
+                          print('add');
+                        },
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),

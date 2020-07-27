@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medica/model/database.dart';
+import 'package:medica/model/model_tableaux/medicament.dart';
 import 'package:medica/view/add_med_screen.dart';
 import 'package:medica/view/calculer_la_dose_screen.dart';
 import 'package:medica/view/debut_journe_screen.dart';
@@ -8,11 +10,16 @@ import 'package:medica/view/list_history_screen.dart';
 import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/view/menu.dart';
 import 'package:medica/view/medicament_details_screen.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+
 import 'view/start.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  var dbmanager = new Dbmedica();
+  //add med
+  int savemed =
+      await dbmanager.insertMedicament(new Medicament("oxydol", 20, 56));
+  print('med saved $savemed');
   runApp(
     MaterialApp(
       theme: ThemeData.light().copyWith(

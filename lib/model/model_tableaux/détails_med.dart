@@ -29,7 +29,19 @@ class Detail_medicament {
       this._verre_4,
       this._verre_25,
       this._PVC_25);
-  Detail_medicament.map(dynamic obj) {}
+  Detail_medicament.map(dynamic obj) {
+    this._nom_labo = obj['nom_labo'];
+    this._presentation = obj['presentation'];
+    this._prix = obj['prix'];
+    this._c_init = obj['c_init'];
+    this._c_min = obj['c_min'];
+    this._c_max = obj['c_max'];
+    this._volume = obj['volume'];
+    this._verre_4 = obj['verre_4'];
+    this._verre_25 = obj['verre_25'];
+    this._PVC_25 = obj['pvc_25'];
+    this._id_medicament = obj['id_medicament'];
+  }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
 

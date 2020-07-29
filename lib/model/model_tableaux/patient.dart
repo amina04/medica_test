@@ -17,7 +17,14 @@ class Patient {
     this._poids,
     this._surface_coporelle,
   );
-  Patient.map(dynamic obj) {}
+  Patient.map(dynamic obj) {
+    this._nom = obj['nom'];
+    this._prenom = obj['prenom'];
+    this._taille = obj['taille'];
+    this._poids = obj['poids'];
+    this._surface_coporelle = obj['surface_coporelle'];
+    this._id_patient = obj['id_patient'];
+  }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
   int get id_patient => _id_patient;

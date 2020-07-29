@@ -25,7 +25,17 @@ class Solution {
     this._id_patient,
   );
 
-  Solution.map(dynamic obj) {}
+  Solution.map(dynamic obj) {
+    this._date_preparation = obj['date_preparation'];
+    this._posologie = obj['posologie'];
+    this._reduction = obj['reduction'];
+    this._dose_administrer = obj['dose_administrer'];
+    this._volume_finale = obj['volume_finale'];
+    this._id_solution = obj['id_solution'];
+    this._id_patient = obj['id_patient'];
+    this._id_medicament = obj['id_medicament'];
+    this._poches = obj['poches'];
+  }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
   int get id_solution => _id_solution;

@@ -4,7 +4,7 @@ class Medicament {
   //les colones de table student
   int _id_medicament;
   String _nom;
-  int _qte_disponible;
+  double _qte_disponible;
   double _volume_flacon;
   //un constructeur pour remplir le table
   Medicament(
@@ -13,19 +13,24 @@ class Medicament {
     this._volume_flacon,
   );
 
-  Medicament.map(dynamic obj) {}
+  Medicament.map(dynamic obj) {
+    this._nom = obj['nom'];
+    this._qte_disponible = obj['qte_disponible'];
+    this._volume_flacon = obj['volume_flacon'];
+    this._id_medicament = obj['id_medicament'];
+  }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
-  int get id => _id_medicament;
+  int get id_medicament => _id_medicament;
   String get nom => _nom;
-  int get qte_disponible => _qte_disponible;
+  double get qte_disponible => _qte_disponible;
   double get volume_flacon => _volume_flacon;
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
     map['nom'] = _nom;
     map['qte_disponible'] = _qte_disponible;
     map['volume_flacon'] = _volume_flacon;
-    if (id != null) {
+    if (id_medicament != null) {
       map['id_medicament'] = _id_medicament;
     }
     return map;

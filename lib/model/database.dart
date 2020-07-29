@@ -25,7 +25,7 @@ class Dbmedica {
   final String tableMed = 'tableMedicament';
   final String columnId_med = 'id_med';
   final String columnNom = 'nom';
-  final String columnQte_disponible = 'qte_diqponible';
+  final String columnQte_disponible = 'qte_disponible';
   final String columnVolume_flacon = 'volume_flacon';
   //tableau details medicament==========================================
   final String tabledetailMed = 'detailsMedicament';
@@ -91,7 +91,7 @@ class Dbmedica {
     debugPrint('Database OnCreate');
     //table medicament
     await db.execute(
-      "CREATE TABLE $tableMed($columnId_med INTEGER PRIMARY KEY autoincrement,$columnNom TEXT, $columnQte_disponible INTEGER,$columnVolume_flacon REAL)",
+      "CREATE TABLE $tableMed($columnId_med INTEGER PRIMARY KEY , $columnNom TEXT , $columnQte_disponible REAL , $columnVolume_flacon REAL)",
     );
     debugPrint('table OnCreate');
 /*    debugPrint('medicament OnCreate');
@@ -124,6 +124,7 @@ class Dbmedica {
   Future<int> insertMedicament(Medicament med) async {
     var dbMedicament = await db;
     int res = await dbMedicament.insert("$tableMed", med.toMap());
+
     return res;
   }
 
@@ -132,6 +133,15 @@ class Dbmedica {
     var dbMedicament = await db;
     var result = await dbMedicament.rawQuery("SELECT * FROM $tableMed");
     return result.toList();
+  }
+
+  //afficher un medicament
+  Future<Medicament> getMed(int id) async {
+    var dbMedicament = await db;
+    var result = await dbMedicament
+        .rawQuery("SELECT * FROM $tableMed WHERE $columnId_med =$id");
+    if (result.length == 0) return null;
+    return new Medicament.fromMap(result.first);
   }
 
   //supprimer un medicament
@@ -145,10 +155,9 @@ class Dbmedica {
   //modifier medicament
   Future<int> modifierMed(Medicament med) async {
     var dbMedicament = await db;
-    return await dbMedicament
-        //? veut dire que on le connait pas pour le moment
-        .update(tableMed, med.toMap(),
-            where: "$columnId_med = ?", whereArgs: [med.id]);
+    //? veut dire que on le connait pas pour le moment
+    return await dbMedicament.update(tableMed, med.toMap(),
+        where: "$columnId_med = ?", whereArgs: [med.id_medicament]);
   }
 
 /*

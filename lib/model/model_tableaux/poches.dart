@@ -9,7 +9,10 @@ class Poches {
   Poches(
     this._volume_poche,
   );
-  Poches.map(dynamic obj) {}
+  Poches.map(dynamic obj) {
+    this._volume_poche = obj['volume_poche'];
+    this._poche = obj['poche'];
+  }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
   int get poche => _poche;

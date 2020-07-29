@@ -15,7 +15,12 @@ class Calculs {
     this._id_medicament,
     this._date_preparation,
   );
-  Calculs.map(dynamic obj) {}
+  Calculs.map(dynamic obj) {
+    this._reliquat = obj['reliquat'];
+    this._qte_consomme = obj['qte_consomme'];
+    this._date_preparation = obj['date_preparation'];
+    this._id_medicament = obj['id_medicament'];
+  }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
   double get reliquat => _reliquat;

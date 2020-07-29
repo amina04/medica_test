@@ -112,9 +112,10 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
                             title: "Erreur",
                             desc: "vous devez remplir les champs d'abord.")
                         .show();
+
+                    posologie_ctrl.text = '0.0';
+                    surface_coporelle_ctrl.text = '0.0';
                   }
-                  posologie_ctrl.text = '0.0';
-                  surface_coporelle_ctrl.text = '0.0';
                 }
               },
               onStepCancel: _currentStep > 0

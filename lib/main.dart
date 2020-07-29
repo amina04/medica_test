@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medica/controller/add_med_controller.dart';
 import 'package:medica/model/database.dart';
 import 'package:medica/model/model_tableaux/medicament.dart';
 import 'package:medica/view/add_med_screen.dart';
@@ -13,13 +14,44 @@ import 'package:medica/view/medicament_details_screen.dart';
 
 import 'view/start.dart';
 
+List _meds;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbmanager = new Dbmedica();
   //add med
-  int savemed =
-      await dbmanager.insertMedicament(new Medicament("oxydol", 20, 56));
+
+  int savemed = await dbmanager.insertMedicament(new Medicament("coly", 5, 6));
   print('med saved $savemed');
+  int savemed2 =
+      await dbmanager.insertMedicament(new Medicament("rawn", 4, 56));
+  print('med saved $savemed2');
+
+  /*//get one med
+  Medicament pol = await dbmanager.getMed(6);
+  print('got med  ${pol.nom}');*/
+  /*//supprmer med
+  int meddeleted = await dbmanager.supprimerMed(1);
+  if (meddeleted == 1) {
+    print('the med is deleted');
+  }*/
+  //updating a medicament
+/*  Medicament oxydol = await dbmanager.getMed(5);
+  Medicament medUpdated = Medicament.fromMap({
+    "nom": "doliprane",
+    "qte_disponible": 23,
+    "volume_flacon": 4,
+    "id_medicament": 2,
+  });
+  await dbmanager.modifierMed(medUpdated);*/
+  //Get all meds
+
+  _meds = await dbmanager.getAllMed();
+  for (int i = 0; i < _meds.length; i++) {
+    //la liste contient des objet il faut cree les objets
+    // model var =model.map(liste)
+    Medicament med = Medicament.map(_meds[i]);
+    print("medicament nom : ${med.id_medicament}");
+  }
   runApp(
     MaterialApp(
       theme: ThemeData.light().copyWith(

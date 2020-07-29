@@ -14,9 +14,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  sqflite:
-  path:
-  path_provider:
+  sqflite: '>=0.8.5'
+  path_provider: "^0.4.1"
 
 dev_dependencies:
   flutter_test:

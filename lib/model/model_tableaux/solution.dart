@@ -9,9 +9,9 @@ class Solution {
   double _dose_administrer;
   double _volume_finale;
   //=====clé etrangers====
-  int _id_medicament;
-  int _poches;
-  int _id_patient;
+  int _FKmedId;
+  int _FKpoche;
+  int _FKpatientId;
 
   //un constructeur pour remplir le table
   Solution(
@@ -20,9 +20,9 @@ class Solution {
     this._reduction,
     this._dose_administrer,
     this._volume_finale,
-    this._id_medicament,
-    this._poches,
-    this._id_patient,
+    this._FKmedId,
+    this._FKpoche,
+    this._FKpatientId,
   );
 
   Solution.map(dynamic obj) {
@@ -32,9 +32,9 @@ class Solution {
     this._dose_administrer = obj['dose_administrer'];
     this._volume_finale = obj['volume_finale'];
     this._id_solution = obj['id_solution'];
-    this._id_patient = obj['id_patient'];
-    this._id_medicament = obj['id_medicament'];
-    this._poches = obj['poches'];
+    this._FKpatientId = obj['FKpatientId'];
+    this._FKmedId = obj['FKmedId'];
+    this._FKpoche = obj['FKpoche'];
   }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
@@ -44,9 +44,9 @@ class Solution {
   int get reduction => _reduction;
   double get dose_administrer => _dose_administrer;
   double get volume_finale => _volume_finale;
-  int get id_medicament => _id_medicament;
-  int get poches => _poches;
-  int get id_patient => _id_patient;
+  int get FKmedId => _FKmedId;
+  int get FKpoche => _FKpoche;
+  int get FKpatientId => _FKpatientId;
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
@@ -55,9 +55,9 @@ class Solution {
     map['reduction'] = _reduction;
     map['dose_administrer'] = _dose_administrer;
     map['volume_finale'] = _volume_finale;
-    map['id_medicament'] = _id_medicament;
-    map['id_patient'] = _id_patient;
-    map['poches'] = _poches;
+    map['FKmedId'] = _FKmedId;
+    map['FKpatientId'] = _FKpatientId;
+    map['FKpoche'] = _FKpoche;
     if (id_solution != null) {
       map['id_solution'] = _id_solution;
     }
@@ -72,8 +72,8 @@ class Solution {
     this._dose_administrer = map['dose_administrer'];
     this._volume_finale = map['volume_finale'];
     this._id_solution = map['id_solution'];
-    this._id_patient = map['id_patient'];
-    this._id_medicament = map['id_medicament'];
-    this._poches = map['poches'];
+    this._FKpatientId = map['FKpatientId'];
+    this._FKmedId = map['FKmedId'];
+    this._FKpoche = map['FKpoche'];
   }
 }

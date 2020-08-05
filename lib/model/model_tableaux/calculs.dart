@@ -5,35 +5,35 @@ class Calculs {
   double _reliquat;
   double _qte_consomme;
   //=====clé etrangers====
-  int _id_medicament;
-  String _date_preparation;
+  int _FKmedId;
+  String _FKDatePre;
 
   //un constructeur pour remplir le table
   Calculs(
     this._reliquat,
     this._qte_consomme,
-    this._id_medicament,
-    this._date_preparation,
+    this._FKmedId,
+    this._FKDatePre,
   );
   Calculs.map(dynamic obj) {
     this._reliquat = obj['reliquat'];
     this._qte_consomme = obj['qte_consomme'];
-    this._date_preparation = obj['date_preparation'];
-    this._id_medicament = obj['id_medicament'];
+    this._FKDatePre = obj['FKDatePre'];
+    this._FKmedId = obj['FKmedId'];
   }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
   double get reliquat => _reliquat;
   double get qte_consomme => _qte_consomme;
-  int get id_medicament => _id_medicament;
-  String get date_preparation => _date_preparation;
+  int get FKmedId => _FKmedId;
+  String get FKDatePre => _FKDatePre;
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
     map['reliquat'] = _reliquat;
     map['qte_consomme'] = _qte_consomme;
-    map['date_preparation'] = _date_preparation;
-    map['id_medicament'] = _id_medicament;
+    map['FKDatePre'] = _FKDatePre;
+    map['FKmedId'] = _FKmedId;
 
     return map;
   }
@@ -41,7 +41,7 @@ class Calculs {
   Calculs.fromMap(Map<String, dynamic> map) {
     this._reliquat = map['reliquat'];
     this._qte_consomme = map['qte_consomme'];
-    this._date_preparation = map['date_preparation'];
-    this._id_medicament = map['id_medicament'];
+    this._FKDatePre = map['FKDatePre'];
+    this._FKmedId = map['FKmedId'];
   }
 }

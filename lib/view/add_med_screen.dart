@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
+import 'package:medica/main.dart';
 import 'package:medica/model/database.dart';
+import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/TextFieldmedica.dart';
 import 'package:medica/controller/add_med_controller.dart';
 import 'package:medica/model/model_tableaux/medicament.dart';
@@ -16,6 +18,7 @@ class Add_med extends StatefulWidget {
 class _Add_med extends State<Add_med> {
   //cree une instance de db class
 
+  var dbmanager = new Dbmedica();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -349,7 +352,14 @@ class _Add_med extends State<Add_med> {
                 "sauvegarder",
                 style: kbuttonTextStyle,
               ),
-              onPressed: () {},
+              onPressed: () {
+                //ajouter un medicament
+                dbmanager.insertMedicament(new Medicament(
+                    nom_med_ctrl.text,
+                    double.parse(qte_disponible_ctrl.text),
+                    double.parse(volum_flcn_ctrl.text)));
+
+              },
             ),
           ],
         ),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:medica/model/database.dart';
+import 'package:medica/model/model_tableaux/medicament.dart';
 import 'package:medica/view/medicament_details_screen.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'add_med_screen.dart';
+import 'package:medica/main.dart';
 
 class List_med extends StatefulWidget {
   static String id = 'list_med_screen';
@@ -12,6 +15,10 @@ class List_med extends StatefulWidget {
 }
 
 class _List_medState extends State<List_med> {
+  var dbmanager = new Dbmedica();
+
+
+
   @override
   bool medicament_existe = false;
   Icon cusIcon = Icon(Icons.search);
@@ -79,12 +86,12 @@ class _List_medState extends State<List_med> {
   //la methode buildlist view
   ListView _buildlistview() {
     return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (_, index) {
+        itemCount: meds.length,
+        itemBuilder: (_, int position) {
           return Card(
             child: ListTile(
               title: Text(
-                'médicament $index',
+                'médicament : ${Medicament.fromMap(meds[position]).nom}',
                 style: kresultliststyle,
               ),
               //un sous titre
@@ -108,5 +115,18 @@ class _List_medState extends State<List_med> {
             ),
           );
         });
+  }
+}
+
+Medicament getMED() {
+  for (int i = 0; i < meds.length; i++) {
+    //la liste contient des objet il faut cree les objets
+    // model var =model.map(liste)
+    Medicament med = Medicament.map(meds[i]);
+    print("medicament nom : ${med.nom}");
+    print("medicament qte  : ${med.qte_disponible}");
+    print("medicament volume : ${med.volume_flacon}");
+    print("medicament id: ${med.id_medicament}");
+    return med;
   }
 }

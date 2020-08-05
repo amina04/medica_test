@@ -14,17 +14,17 @@ import 'package:medica/view/medicament_details_screen.dart';
 
 import 'view/start.dart';
 
-List _meds;
+List meds;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbmanager = new Dbmedica();
   //add med
-
+/*
   int savemed = await dbmanager.insertMedicament(new Medicament("coly", 5, 6));
   print('med saved $savemed');
   int savemed2 =
       await dbmanager.insertMedicament(new Medicament("rawn", 4, 56));
-  print('med saved $savemed2');
+  print('med saved $savemed2');*/
 
   /*//get one med
   Medicament pol = await dbmanager.getMed(6);
@@ -35,23 +35,29 @@ void main() async {
     print('the med is deleted');
   }*/
   //updating a medicament
-/*  Medicament oxydol = await dbmanager.getMed(5);
+  /*Medicament oxydol = await dbmanager.getMed(8);
   Medicament medUpdated = Medicament.fromMap({
     "nom": "doliprane",
-    "qte_disponible": 23,
-    "volume_flacon": 4,
-    "id_medicament": 2,
+    "qte_disponible": 23.3,
+    "volume_flacon": 4.1,
+    "id_medicament": 1,
   });
   await dbmanager.modifierMed(medUpdated);*/
   //Get all meds
-
-  _meds = await dbmanager.getAllMed();
-  for (int i = 0; i < _meds.length; i++) {
+/*
+   meds = await dbmanager.getAllMed();
+  for (int i = 0; i < meds.length; i++) {
     //la liste contient des objet il faut cree les objets
     // model var =model.map(liste)
-    Medicament med = Medicament.map(_meds[i]);
-    print("medicament nom : ${med.id_medicament}");
+    Medicament med = Medicament.map(meds[i]);
+    print("medicament nom : ${med.nom}");
+    print("medicament qte  : ${med.qte_disponible}");
+    print("medicament volume : ${med.volume_flacon}");
+    print("medicament id: ${med.id_medicament}");
   }
+*/
+  meds = await dbmanager.getAllMed();
+
   runApp(
     MaterialApp(
       theme: ThemeData.light().copyWith(

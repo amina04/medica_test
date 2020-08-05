@@ -23,7 +23,7 @@ class Dbmedica {
 //la declaration des attributs des tableaux pour eviter de tamber en erreur d'ortographe
   //tableau medicament=============================================
   final String tableMed = 'tableMedicament';
-  final String columnId_med = 'id_med';
+  final String columnId_med = 'id_medicament';
   final String columnNom = 'nom';
   final String columnQte_disponible = 'qte_disponible';
   final String columnVolume_flacon = 'volume_flacon';
@@ -32,13 +32,13 @@ class Dbmedica {
   final String columnNom_labo = 'nom_labo';
   final String columnPresenatation = 'presentation';
   final String columnPrix = 'prix';
-  final String columnCni = 'c_ini';
+  final String columnCni = 'c_init';
   final String columnCmin = 'c_min';
   final String columnCmax = 'c_max';
   final String columnVolume_apr_pre = 'volume';
-  final String column_verre_4 = 'flacon_verre_4';
-  final String column_verre_25 = 'flacon_verre_25';
-  final String column_PVC_25 = 'flacon_pvc_25';
+  final String column_verre_4 = 'verre_4';
+  final String column_verre_25 = 'verre_25';
+  final String column_PVC_25 = 'PVC_25';
   //tableau solution============================================================
   final String tablesolution = 'tableSolution';
   final String columnIdSolution = 'id_solution';
@@ -52,13 +52,13 @@ class Dbmedica {
   final String columnIdPatient = 'id_patient';
   final String columnNom_patient = 'Nom_patient';
   final String columnPrenom_patient = 'Prenom_patient';
-  final String columnTaille = 'Taille';
-  final String columnPoids = 'Poids';
-  final String columnSurfaceCoporelle = 'SurfaceCoporelle';
+  final String columnTaille = 'taille';
+  final String columnPoids = 'poids';
+  final String columnSurfaceCoporelle = 'surface_coporelle';
   //tableau poches============================================================
   final String tablePoches = 'tablePoches';
   final String columnPoche = 'poche';
-  final String columnVolumePoche = 'Volume_poche';
+  final String columnVolumePoche = 'volume_poche';
   //tableau calculs============================================================
   final String tableCalculs = 'tableCalculs';
   final String columnReliquat = 'reliquat';

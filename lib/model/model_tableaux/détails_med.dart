@@ -15,10 +15,10 @@ class Detail_medicament {
   int _PVC_25;
 
   //=====clé etrangers====
-  int _id_medicament;
+  int _FKmedId;
   //un constructeur pour remplir le table
   Detail_medicament(
-      this._id_medicament,
+      this._FKmedId,
       this._nom_labo,
       this._presentation,
       this._prix,
@@ -39,8 +39,8 @@ class Detail_medicament {
     this._volume = obj['volume'];
     this._verre_4 = obj['verre_4'];
     this._verre_25 = obj['verre_25'];
-    this._PVC_25 = obj['pvc_25'];
-    this._id_medicament = obj['id_medicament'];
+    this._PVC_25 = obj['PVC_25'];
+    this._FKmedId = obj['FKmedId'];
   }
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
@@ -55,7 +55,7 @@ class Detail_medicament {
   int get verre_4 => _verre_4;
   int get verre_25 => _verre_25;
   int get PVC_25 => _PVC_25;
-  int get id_medicament => _id_medicament;
+  int get FKmedId => _FKmedId;
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
@@ -69,8 +69,8 @@ class Detail_medicament {
     map['volume'] = _volume;
     map['verre_4'] = _verre_4;
     map['verre_25'] = _verre_25;
-    map['pvc_25'] = _PVC_25;
-    map['id_medicament'] = _id_medicament;
+    map['PVC_25'] = _PVC_25;
+    map['FKmedId'] = _FKmedId;
 
     return map;
   }
@@ -85,7 +85,7 @@ class Detail_medicament {
     this._volume = map['volume'];
     this._verre_4 = map['verre_4'];
     this._verre_25 = map['verre_25'];
-    this._PVC_25 = map['pvc_25'];
-    this._id_medicament = map['id_medicament'];
+    this._PVC_25 = map['PVC_25'];
+    this._FKmedId = map['FKmedId'];
   }
 }

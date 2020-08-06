@@ -16,8 +16,20 @@ class List_med extends StatefulWidget {
 
 class _List_medState extends State<List_med> {
   var dbmanager = new Dbmedica();
-
-
+  @override
+  void initState() {
+    super.initState();
+    dbmanager.getAllMed();
+    for (int i = 0; i < meds.length; i++) {
+      //la liste contient des objet il faut cree les objets
+      // model var =model.map(liste)
+      Medicament med = Medicament.map(meds[i]);
+      print("medicament nom : ${med.nom}");
+      print("medicament qte  : ${med.qte_disponible}");
+      print("medicament volume : ${med.volume_flacon}");
+      print("medicament id: ${med.id_medicament}");
+    }
+  }
 
   @override
   bool medicament_existe = false;
@@ -68,7 +80,17 @@ class _List_medState extends State<List_med> {
         gradient:
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),
       ),
-      body: _buildlistview(),
+      //pour reecrier la list view aprées chaque ajout
+      body: FutureBuilder(
+        future: dbmanager.getAllMed(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            meds = snapshot.data;
+            return _buildlistview();
+          }
+          return new CircularProgressIndicator();
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, Add_med.id);
@@ -86,8 +108,8 @@ class _List_medState extends State<List_med> {
   //la methode buildlist view
   ListView _buildlistview() {
     return ListView.builder(
-        itemCount: meds.length,
-        itemBuilder: (_, int position) {
+        itemCount: meds == null ? 0 : meds.length,
+        itemBuilder: (BuildContext context, int position) {
           return Card(
             child: ListTile(
               title: Text(

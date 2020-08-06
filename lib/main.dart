@@ -57,7 +57,6 @@ void main() async {
   }
 */
   meds = await dbmanager.getAllMed();
-
   runApp(
     MaterialApp(
       theme: ThemeData.light().copyWith(

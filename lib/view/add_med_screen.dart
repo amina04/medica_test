@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:medica/main.dart';
 import 'package:medica/model/database.dart';
-import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/TextFieldmedica.dart';
 import 'package:medica/controller/add_med_controller.dart';
+import 'package:medica/model/model_tableaux/medicament.dart';
+import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/model/model_tableaux/medicament.dart';
 
 class Add_med extends StatefulWidget {
@@ -358,7 +359,9 @@ class _Add_med extends State<Add_med> {
                     nom_med_ctrl.text,
                     double.parse(qte_disponible_ctrl.text),
                     double.parse(volum_flcn_ctrl.text)));
-
+                nom_med_ctrl.clear();
+                qte_disponible_ctrl.clear();
+                volum_flcn_ctrl.clear();
               },
             ),
           ],

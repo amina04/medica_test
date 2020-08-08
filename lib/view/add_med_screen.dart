@@ -106,8 +106,10 @@ class _Add_med extends State<Add_med> {
                           ),
                         ),
                         onTap: () {
-                          print('add');
-                          presentation_ctrl.text = ' ';
+                          // TODO: insirer un autre stabilité
+                          //renouvler l ajout de présentation
+                          print('add presentation');
+                          presentation_ctrl.clear();
                         },
                       )
                     ],
@@ -330,10 +332,12 @@ class _Add_med extends State<Add_med> {
                           ),
                         ),
                         onTap: () {
-                          temperature_ctrl.text = ' ';
-                          stabilite_ctrl.text = ' ';
-                          flacon_ctrl.text = ' ';
-                          print('add');
+                          // TODO:insirer stabilite
+                          //pour renouvler l ajout de stabilité
+                          temperature_ctrl.clear();
+                          stabilite_ctrl.clear();
+                          flacon_ctrl.clear();
+                          print('add stabilité');
                         },
                       )
                     ],
@@ -359,9 +363,21 @@ class _Add_med extends State<Add_med> {
                     nom_med_ctrl.text,
                     double.parse(qte_disponible_ctrl.text),
                     double.parse(volum_flcn_ctrl.text)));
+                // TODO: insertion details medicament
+                //pour met les texte field null
                 nom_med_ctrl.clear();
-                qte_disponible_ctrl.clear();
+                nom_labo_ctrl.clear();
                 volum_flcn_ctrl.clear();
+                qte_disponible_ctrl.clear();
+                presentation_ctrl.clear();
+                c_ini_ctrl.clear();
+                c_min_ctrl.clear();
+                c_max_ctrl.clear();
+                volum_apr_praparation_ctrl.clear();
+                prix_ctrl.clear();
+                flacon_ctrl.clear();
+                temperature_ctrl.clear();
+                stabilite_ctrl.clear();
               },
             ),
           ],

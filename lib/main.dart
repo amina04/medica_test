@@ -15,6 +15,9 @@ import 'package:medica/view/medicament_details_screen.dart';
 import 'view/start.dart';
 
 List meds;
+//utilisée dans list view pour le item selectionner a le id de item
+
+int selected_id;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbmanager = new Dbmedica();

@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:medica/model/database.dart';
+import 'package:medica/model/model_tableaux/medicament.dart';
 import 'package:medica/view/list_med_screen.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:medica/main.dart';
 
 class Detail_med extends StatefulWidget {
   static String id = 'Detail_med';
 
   @override
-  _Detail_med createState() => _Detail_med();
+  State<StatefulWidget> createState() {
+    return _Detail_med();
+  }
 }
 
 class _Detail_med extends State<Detail_med> {
+  var dbmanager = new Dbmedica();
+
+  String nom_medicament;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +42,7 @@ class _Detail_med extends State<Detail_med> {
                   style: klabeladdMedStyle,
                 ),
                 Text(
-                  'Flazol',
+                  "flazol",
                   style: kresultliststyle,
                 ),
               ],
@@ -215,6 +224,10 @@ class _Detail_med extends State<Detail_med> {
                         ),
                         onPressed: () {
                           // TODO: supprimer le médicament de base de donnéé
+                          //supprmer med
+
+                          dbmanager.supprimerMed(selected_id);
+
                           print('oui');
                           Navigator.pushNamed(context, List_med.id);
                         },

@@ -238,6 +238,8 @@ class _Detail_med extends State<Detail_med> {
                   nom_med_ctrl.text = nom_medicament;
                   volum_flcn_ctrl.text = volume_flcn.toString();
                   qte_disponible_ctrl.text = qte_disponible.toString();
+                  med_modif = med_det;
+                  updated_id = selected_id;
                 },
               ),
               SizedBox(

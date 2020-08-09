@@ -70,6 +70,7 @@ class _List_medState extends State<List_med> {
             LinearGradient(colors: [Colors.lightBlueAccent, Colors.tealAccent]),
       ),
       //pour reecrier la list view aprées chaque ajout
+
       body: FutureBuilder(
         future: dbmanager.getAllMed(),
         builder: (context, snapshot) {

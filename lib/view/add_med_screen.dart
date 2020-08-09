@@ -357,27 +357,57 @@ class _Add_med extends State<Add_med> {
                 "sauvegarder",
                 style: kbuttonTextStyle,
               ),
-              onPressed: () {
-                //ajouter un medicament
-                dbmanager.insertMedicament(new Medicament(
-                    nom_med_ctrl.text,
-                    double.parse(qte_disponible_ctrl.text),
-                    double.parse(volum_flcn_ctrl.text)));
-                // TODO: insertion details medicament
-                //pour met les texte field null
-                nom_med_ctrl.clear();
-                nom_labo_ctrl.clear();
-                volum_flcn_ctrl.clear();
-                qte_disponible_ctrl.clear();
-                presentation_ctrl.clear();
-                c_ini_ctrl.clear();
-                c_min_ctrl.clear();
-                c_max_ctrl.clear();
-                volum_apr_praparation_ctrl.clear();
-                prix_ctrl.clear();
-                flacon_ctrl.clear();
-                temperature_ctrl.clear();
-                stabilite_ctrl.clear();
+              onPressed: () async {
+                //ajout de med
+                if (med_modif == null) {
+                  //ajouter un medicament
+                  dbmanager.insertMedicament(new Medicament(
+                      nom_med_ctrl.text,
+                      double.parse(qte_disponible_ctrl.text),
+                      double.parse(volum_flcn_ctrl.text)));
+                  // TODO: insertion details medicament
+                  //pour met les texte field null
+                  nom_med_ctrl.clear();
+                  nom_labo_ctrl.clear();
+                  volum_flcn_ctrl.clear();
+                  qte_disponible_ctrl.clear();
+                  presentation_ctrl.clear();
+                  c_ini_ctrl.clear();
+                  c_min_ctrl.clear();
+                  c_max_ctrl.clear();
+                  volum_apr_praparation_ctrl.clear();
+                  prix_ctrl.clear();
+                  flacon_ctrl.clear();
+                  temperature_ctrl.clear();
+                  stabilite_ctrl.clear();
+                } else {
+                  //modification
+                  Medicament medUpdated = Medicament.fromMap({
+                    "nom": nom_med_ctrl.text,
+                    "qte_disponible": double.parse(qte_disponible_ctrl.text),
+                    "volume_flacon": double.parse(volum_flcn_ctrl.text),
+                    "id_medicament": updated_id,
+                  });
+                  await dbmanager.modifierMed(medUpdated);
+                  //pour met les texte field null
+                  nom_med_ctrl.clear();
+                  nom_labo_ctrl.clear();
+                  volum_flcn_ctrl.clear();
+                  qte_disponible_ctrl.clear();
+                  presentation_ctrl.clear();
+                  c_ini_ctrl.clear();
+                  c_min_ctrl.clear();
+                  c_max_ctrl.clear();
+                  volum_apr_praparation_ctrl.clear();
+                  prix_ctrl.clear();
+                  flacon_ctrl.clear();
+                  temperature_ctrl.clear();
+                  stabilite_ctrl.clear();
+                  //mettre medupdated null a lafin de procuss
+                  med_modif = null;
+                  updated_id = null;
+                  Navigator.pushNamed(context, List_med.id);
+                }
               },
             ),
           ],

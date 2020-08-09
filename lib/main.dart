@@ -16,7 +16,7 @@ import 'view/start.dart';
 
 List meds;
 //utilisée dans list view pour le item selectionner a le id de item
-
+Medicament med_det;
 int selected_id;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,6 +60,7 @@ void main() async {
   }
 */
   meds = await dbmanager.getAllMed();
+  //med_det = await dbmanager.getMed(selected_id);
   runApp(
     MaterialApp(
       theme: ThemeData.light().copyWith(

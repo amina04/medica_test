@@ -1,11 +1,16 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:medica/controller/add_med_controller.dart';
 import 'package:medica/model/database.dart';
 import 'package:medica/model/model_tableaux/medicament.dart';
 import 'package:medica/view/list_med_screen.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:medica/main.dart';
+
+import 'add_med_screen.dart';
 
 class Detail_med extends StatefulWidget {
   static String id = 'Detail_med';
@@ -18,9 +23,11 @@ class Detail_med extends StatefulWidget {
 
 class _Detail_med extends State<Detail_med> {
   var dbmanager = new Dbmedica();
-
-  String nom_medicament;
-
+//remplir les variable apartir de variable meds qui est de type medicament qui est initialiser dans list med screen
+  String nom_medicament = med_det.nom;
+  double volume_flcn = med_det.volume_flacon;
+  double qte_disponible = med_det.qte_disponible;
+  // TODO:remplir les autres a partire tableau med_detail
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +49,7 @@ class _Detail_med extends State<Detail_med> {
                   style: klabeladdMedStyle,
                 ),
                 Text(
-                  "flazol",
+                  "$nom_medicament",
                   style: kresultliststyle,
                 ),
               ],
@@ -62,6 +69,36 @@ class _Detail_med extends State<Detail_med> {
                 ),
                 Text(
                   'Flacon de 80mg/4ml ',
+                  style: kresultliststyle,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Volume de flacon :',
+                  style: klabeladdMedStyle,
+                ),
+                Text(
+                  '$volume_flcn',
+                  style: kresultliststyle,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Quantité disponible :',
+                  style: klabeladdMedStyle,
+                ),
+                Text(
+                  '$qte_disponible',
                   style: kresultliststyle,
                 ),
               ],
@@ -135,7 +172,7 @@ class _Detail_med extends State<Detail_med> {
               children: <Widget>[
                 Text(
                   ' Prix du mg :',
-                  style: ktitleliststyle,
+                  style: klabeladdMedStyle,
                 ),
                 Text(
                   '100 DA',
@@ -194,7 +231,14 @@ class _Detail_med extends State<Detail_med> {
                   "modifier",
                   style: kbuttonTextStyle,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  //aller a add med screen
+                  Navigator.pushNamed(context, Add_med.id);
+                  // TODO:remplir les autres
+                  nom_med_ctrl.text = nom_medicament;
+                  volum_flcn_ctrl.text = volume_flcn.toString();
+                  qte_disponible_ctrl.text = qte_disponible.toString();
+                },
               ),
               SizedBox(
                 width: 20.0,
@@ -223,7 +267,6 @@ class _Detail_med extends State<Detail_med> {
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         onPressed: () {
-                          // TODO: supprimer le médicament de base de donnéé
                           //supprmer med
 
                           dbmanager.supprimerMed(selected_id);

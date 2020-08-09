@@ -120,28 +120,18 @@ class _List_medState extends State<List_med> {
                 size: 35.0,
                 color: Colors.lightBlueAccent,
               ),
-              onTap: () {
+              //ajouter async pour marcher get med avec await
+              onTap: () async {
                 // Navigator.pushNamed(context, Detail_med.id);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Detail_med()));
+
                 selected_id = Medicament.fromMap(meds[position]).id_medicament;
                 print('id delectionne $selected_id');
+                med_det = await dbmanager.getMed(selected_id);
               },
             ),
           );
         });
-  }
-}
-
-Medicament getMED() {
-  for (int i = 0; i < meds.length; i++) {
-    //la liste contient des objet il faut cree les objets
-    // model var =model.map(liste)
-    Medicament med = Medicament.map(meds[i]);
-    print("medicament nom : ${med.nom}");
-    print("medicament qte  : ${med.qte_disponible}");
-    print("medicament volume : ${med.volume_flacon}");
-    print("medicament id: ${med.id_medicament}");
-    return med;
   }
 }

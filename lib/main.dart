@@ -60,6 +60,7 @@ void main() async {
     print("medicament id: ${med.id_medicament}");
   }
 */
+
   meds = await dbmanager.getAllMed();
   //med_det = await dbmanager.getMed(selected_id);
   runApp(

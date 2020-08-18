@@ -111,23 +111,7 @@ class _Step3State extends State<Step3> {
               style: kbuttonTextStyle,
             ),
             onPressed: () {
-              //afficher height
-              // print("$height");
-              return showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    // Retrieve the text the user has entered by using the
-                    // TextEditingController.
-                    content: Row(
-                      children: <Widget>[
-                        Text(nom_ctrl.text),
-                        Text(prenom_ctrl.text),
-                      ],
-                    ),
-                  );
-                },
-              );
+              // print(DateTime.now());
             }),
       ],
     );

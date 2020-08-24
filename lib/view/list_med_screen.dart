@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:medica/controller/searching_controller.dart';
 import 'package:medica/main.dart';
 import 'package:medica/model/database.dart';
 import 'package:medica/model/model_tableaux/medicament.dart';
@@ -21,7 +22,7 @@ class _List_medState extends State<List_med> {
   var dbmanager = new Dbmedica();
 
   @override
-  bool medicament_existe = false;
+  // bool medicament_existe = false;
   Icon cusIcon = Icon(Icons.search);
   Widget cusSearchBar = Text(
     'Liste des médicaments',
@@ -37,17 +38,31 @@ class _List_medState extends State<List_med> {
                 if (this.cusIcon.icon == Icons.search) {
                   this.cusIcon = Icon(Icons.cancel);
                   this.cusSearchBar = TextField(
+                    controller: chercher_med_ctrl,
                     decoration:
                         InputDecoration(hintText: 'Chercher un médicament'),
                     textInputAction: TextInputAction.search,
-                    onSubmitted: (term) {
-                      //si le patient n existe pas on affiche ce alert message
-                      if (medicament_existe == false) {
+                    onSubmitted: (term) async {
+                      //si le med n existe pas on affiche ce alert message
+                      med_search =
+                          await dbmanager.chercherMed(chercher_med_ctrl.text);
+
+                      if (med_search == null) {
                         Alert(
                                 context: context,
                                 title: "Ce médicament n'existe pas",
                                 desc: "vous devez le l'ajouter d'abord.")
                             .show();
+                      } else {
+                        print('exisit');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Detail_med()));
+
+                        selected_id = med_search.id_medicament;
+                        print('id delectionne $selected_id');
+                        med_det = med_search;
                       }
                     },
                     style: TextStyle(color: Colors.white, fontSize: 16.0),

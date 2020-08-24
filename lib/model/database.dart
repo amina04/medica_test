@@ -107,11 +107,12 @@ class Dbmedica {
     await db.execute(
       "CREATE TABLE $tableCalculs($columnReliquat REAL,$columnQte_consomme REAL,$FKmedId INTEGER, FOREIGN KEY($FKmedId) REFERENCES $tableMed($columnId_med) ON DELETE CASCADE,$FKDatePre INTEGER, FOREIGN KEY($FKDatePre) REFERENCES $tableMed($columnDatePreparation) ON DELETE CASCADE)",
     );
-
+*/
     //table Patient
     await db.execute(
       "CREATE TABLE $tablepatient($columnIdPatient INTEGER PRIMARY KEY autoincrement,$columnNom_patient TEXT, $columnPrenom_patient TEXT,$columnTaille INTEGER,$columnPoids INTEGER,$columnSurfaceCoporelle REAL)",
     );
+    /*
     //table poches
     await db.execute(
       "CREATE TABLE $tablePoches($columnPoche INTEGER PRIMARY KEY autoincrement,$columnVolumePoche REAL)",
@@ -140,6 +141,15 @@ class Dbmedica {
     var dbMedicament = await db;
     var result = await dbMedicament
         .rawQuery("SELECT * FROM $tableMed WHERE $columnId_med =$id");
+    if (result.length == 0) return null;
+    return new Medicament.fromMap(result.first);
+  }
+
+  //chercher un medicament
+  Future<Medicament> chercherMed(String nom) async {
+    var dbMedicament = await db;
+    var result = await dbMedicament
+        .rawQuery("SELECT * FROM $tableMed WHERE $columnNom LIKE '$nom%' ");
     if (result.length == 0) return null;
     return new Medicament.fromMap(result.first);
   }
@@ -192,7 +202,7 @@ class Dbmedica {
         .update(tabledetailMed, med.toMap(),
             where: "$FKmedId = ?", whereArgs: [med.id]);
   }
-
+*/
   //==============================CRUD patient 3================================================================
 //insirer fonction
   Future<int> insertPatient(Patient pat) async {
@@ -206,6 +216,24 @@ class Dbmedica {
     var dbMedicament = await db;
     var result = await dbMedicament.rawQuery("SELECT * FROM $tablepatient");
     return result.toList();
+  }
+
+//chercher un medicament
+  Future<Patient> chercherPatient(String nom) async {
+    var dbMedicament = await db;
+    var result = await dbMedicament.rawQuery(
+        "SELECT * FROM $tablepatient WHERE $columnNom_patient LIKE '$nom' ");
+    if (result.length == 0) return null;
+    return new Patient.fromMap(result.first);
+  }
+
+  //afficher un patient
+  Future<Patient> getPatient(int id) async {
+    var dbMedicament = await db;
+    var result = await dbMedicament
+        .rawQuery("SELECT * FROM $tablepatient WHERE $columnIdPatient =$id");
+    if (result.length == 0) return null;
+    return new Patient.fromMap(result.first);
   }
 
   //supprimer
@@ -225,6 +253,7 @@ class Dbmedica {
             where: "$columnIdPatient = ?", whereArgs: [pat.id_patient]);
   }
 
+/*
   //==============================CRUD solution 4================================================================
 //insirer fonction
   Future<int> insertSolution(Solution sol) async {

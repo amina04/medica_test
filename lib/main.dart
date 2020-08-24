@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:medica/controller/add_med_controller.dart';
 import 'package:medica/model/database.dart';
@@ -12,13 +15,20 @@ import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/view/menu.dart';
 import 'package:medica/view/medicament_details_screen.dart';
 
+import 'model/model_tableaux/patient.dart';
 import 'view/start.dart';
 
 List meds;
+List patient_list;
 //utilisée dans list view pour le item selectionner a le id de item
-Medicament med_det, med_modif;
+Medicament med_det, med_modif, med_search;
+Patient patient_det, patient_search;
 int selected_id;
+int selected_id_patient;
 int updated_id;
+String selected_item = null;
+int height = 180;
+int weight = 60;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbmanager = new Dbmedica();
@@ -62,7 +72,12 @@ void main() async {
 */
 
   meds = await dbmanager.getAllMed();
+  patient_list = await dbmanager.getAllpatient();
   //med_det = await dbmanager.getMed(selected_id);
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details);
+    if (kReleaseMode) exit(1);
+  };
   runApp(
     MaterialApp(
       theme: ThemeData.light().copyWith(

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:medica/controller/fonctions_calculs.dart';
+import 'package:medica/model/model_tableaux/patient.dart';
 import '../constantes.dart';
 import 'package:medica/controller/calcul_step1_controller.dart';
+import 'package:medica/model/database.dart';
+import 'package:medica/main.dart';
 
 class Step3 extends StatefulWidget {
   @override
@@ -9,6 +12,7 @@ class Step3 extends StatefulWidget {
 }
 
 class _Step3State extends State<Step3> {
+  var dbmanager = new Dbmedica();
   double dose = Dose_a_administrer();
   double volume = Volume_finale();
   int nbr_flacon = Nbr_flacon(volume_flacon: 26.3);
@@ -111,7 +115,26 @@ class _Step3State extends State<Step3> {
               style: kbuttonTextStyle,
             ),
             onPressed: () {
-              // print(DateTime.now());
+              //clock
+
+              String time = DateTime.now().toIso8601String();
+              print('time DateTime.now() $time');
+              //insirer patient
+              dbmanager.insertPatient(new Patient(
+                nom_patient_ctrl.text,
+                prenom_patient_ctrl.text,
+                height,
+                weight,
+                double.parse(surface_coporelle_ctrl.text),
+              ));
+              //clean textfields
+              setState(() {
+                nom_patient_ctrl.clear();
+                prenom_patient_ctrl.clear();
+                height = 180;
+                weight = 60;
+                surface_coporelle_ctrl.clear();
+              });
             }),
       ],
     );

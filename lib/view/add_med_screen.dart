@@ -380,6 +380,9 @@ class _Add_med extends State<Add_med> {
                   flacon_ctrl.clear();
                   temperature_ctrl.clear();
                   stabilite_ctrl.clear();
+                  setState(() {
+                    selected_item = Medicament.fromMap(meds.first).nom;
+                  });
                 } else {
                   //modification
                   Medicament medUpdated = Medicament.fromMap({

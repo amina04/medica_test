@@ -9,6 +9,8 @@ import 'package:medica/constantes.dart';
 import '../widgets_spécifiques/Step3.dart';
 import '../widgets_spécifiques/Step1.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:medica/model/database.dart';
+import 'package:medica/main.dart';
 
 class Calculer_ladose extends StatefulWidget {
   static String id = 'Calculer_ladose_screen';
@@ -18,11 +20,12 @@ class Calculer_ladose extends StatefulWidget {
 }
 
 class _Calculer_ladoseState extends State<Calculer_ladose> {
+  var dbmanager = new Dbmedica();
   @override
   int _currentStep = 0;
-  bool patient_existe = false;
 
-  String current_item = 'med1';
+  // String current_item = 'med1';
+
   //pour search
   Icon cusIcon = Icon(Icons.search);
   Widget cusSearchBar = Text(
@@ -47,17 +50,28 @@ class _Calculer_ladoseState extends State<Calculer_ladose> {
                     decoration:
                         InputDecoration(hintText: 'Chercher un patient'),
                     textInputAction: TextInputAction.search,
-                    onSubmitted: (term) {
+                    onSubmitted: (term) async {
                       //si le patient n existe pas on affiche ce alert message
-                      if (patient_existe == false) {
+                      patient_search = await dbmanager
+                          .chercherPatient(chercher_patient_ctrl.text);
+                      if (patient_search == null) {
                         Alert(
                                 context: context,
                                 title: "Ce patient n'existe pas",
                                 desc: "vous devez le l'ajouter d'abord.")
                             .show();
+                      } else {
+                        //sinon on remplir les champs par les informations de patients
+                        setState(() {
+                          nom_patient_ctrl.text = patient_search.Nom_patient;
+                          prenom_patient_ctrl.text =
+                              patient_search.Prenom_patient;
+                          height = patient_search.taille;
+                          weight = patient_search.poids;
+                          surface_coporelle_ctrl.text =
+                              patient_search.surface_coporelle.toString();
+                        });
                       }
-                      //sinon on remplir les champs par les informations de patients
-                      // TODO: remplir les champs par les infos de patients
                     },
                     style: TextStyle(color: Colors.white, fontSize: 16.0),
                   );

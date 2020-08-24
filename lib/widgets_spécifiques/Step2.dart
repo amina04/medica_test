@@ -14,7 +14,6 @@ class Step2 extends StatefulWidget {
 class _Step2State extends State<Step2> {
   var dbmanager = new Dbmedica();
 
-  String selected_item = Medicament.fromMap(meds.first).nom;
   List<DropdownMenuItem> getDropDownItem() {
     List<DropdownMenuItem<String>> dropdownitems = [];
     for (int i = 0; i < meds.length; i++) {
@@ -25,7 +24,6 @@ class _Step2State extends State<Step2> {
         child: Text(currency),
         value: currency,
       );
-
       dropdownitems.add(newItem);
     }
     return dropdownitems;
@@ -49,7 +47,6 @@ class _Step2State extends State<Step2> {
               future: dbmanager.getAllMed(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  meds = snapshot.data;
                   return DropdownButton<String>(
                     items: getDropDownItem(),
                     value: selected_item,

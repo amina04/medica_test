@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constantes.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/TextFieldmedica.dart';
 import 'package:medica/controller/calcul_step1_controller.dart';
+import 'package:medica/main.dart';
 
 class Step1 extends StatefulWidget {
   @override
@@ -9,9 +10,6 @@ class Step1 extends StatefulWidget {
 }
 
 class _Step1State extends State<Step1> {
-  int height = 180;
-  int weight = 60;
-
   //final surface_coporelle_ctrl = TextEditingController();
 
   @override
@@ -28,12 +26,12 @@ class _Step1State extends State<Step1> {
       children: <Widget>[
         Textfieldmedica(
           label: 'Nom',
-          controller: nom_ctrl,
+          controller: nom_patient_ctrl,
         ),
         SizedBox(height: 10.0),
         Textfieldmedica(
           label: 'Prénom',
-          controller: prenom_ctrl,
+          controller: prenom_patient_ctrl,
         ),
         SizedBox(height: 15.0),
         Row(

@@ -6,8 +6,8 @@ class step1_ctrl extends StatefulWidget {
 }
 
 final surface_coporelle_ctrl = TextEditingController();
-final nom_ctrl = TextEditingController();
-final prenom_ctrl = TextEditingController();
+final nom_patient_ctrl = TextEditingController();
+final prenom_patient_ctrl = TextEditingController();
 
 final chercher_patient_ctrl = TextEditingController();
 
@@ -16,8 +16,8 @@ class _step1_ctrlState extends State<step1_ctrl> {
   void dispose() {
     // Clean up the controller when the widget is disposed. pour allouer la ram
     surface_coporelle_ctrl.dispose();
-    nom_ctrl.dispose();
-    prenom_ctrl.dispose();
+    nom_patient_ctrl.dispose();
+    prenom_patient_ctrl.dispose();
     chercher_patient_ctrl.dispose();
     super.dispose();
   }

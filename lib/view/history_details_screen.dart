@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:medica/model/database.dart';
+
+import '../main.dart';
 
 class Detail_patient extends StatefulWidget {
   static String id = 'Detail_patient';
@@ -10,6 +13,12 @@ class Detail_patient extends StatefulWidget {
 }
 
 class _Detail_patient extends State<Detail_patient> {
+  var dbmanager = new Dbmedica();
+//remplir les variable apartir de variable meds qui est de type medicament qui est initialiser dans list med screen
+
+  String Nom_patient = patient_det.Nom_patient;
+  String Prenom_patient = patient_det.Prenom_patient;
+  double surface_coporelle = patient_det.surface_coporelle;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +47,11 @@ class _Detail_patient extends State<Detail_patient> {
                     width: 10.0,
                   ),
                   Text(
-                    'Khacha ',
+                    '$Nom_patient ',
                     style: kresultliststyle,
                   ),
                   Text(
-                    'Amina ',
+                    '$Prenom_patient ',
                     style: kresultliststyle,
                   ),
                 ],
@@ -60,7 +69,7 @@ class _Detail_patient extends State<Detail_patient> {
                     width: 10.0,
                   ),
                   Text(
-                    '24',
+                    '$surface_coporelle',
                     style: kresultliststyle,
                   ),
                 ],

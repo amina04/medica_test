@@ -70,7 +70,10 @@ class Detail_medicament {
     map['verre_4'] = _verre_4;
     map['verre_25'] = _verre_25;
     map['PVC_25'] = _PVC_25;
-    map['FKmedId'] = _FKmedId;
+    // map['FKmedId'] = _FKmedId;
+    if (FKmedId != null) {
+      map['FKmedId'] = _FKmedId;
+    }
 
     return map;
   }

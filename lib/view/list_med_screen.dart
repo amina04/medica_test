@@ -145,6 +145,7 @@ class _List_medState extends State<List_med> {
                 selected_id = Medicament.fromMap(meds[position]).id_medicament;
                 print('id delectionne $selected_id');
                 med_det = await dbmanager.getMed(selected_id);
+                medi_detail_det = await dbmanager.getMedDetail(selected_id);
               },
             ),
           );

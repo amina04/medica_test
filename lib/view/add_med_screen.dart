@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medica/constantes.dart';
 import 'package:medica/main.dart';
 import 'package:medica/model/database.dart';
+import 'package:medica/model/model_tableaux/d%C3%A9tails_med.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/TextFieldmedica.dart';
 import 'package:medica/controller/add_med_controller.dart';
 import 'package:medica/model/model_tableaux/medicament.dart';
@@ -293,22 +294,22 @@ class _Add_med extends State<Add_med> {
                     height: 20,
                   ),
                   Textfieldmedica(
-                    label: 'Flacon ',
-                    controller: flacon_ctrl,
+                    label: 'Flacon verre 4 ',
+                    controller: verre_4_ctrl,
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Textfieldmedica(
-                    label: 'Températeure ',
-                    controller: temperature_ctrl,
+                    label: 'Flacon verre 25 ',
+                    controller: verre_25_ctrl,
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Textfieldmedica(
-                    label: 'stabilité',
-                    controller: stabilite_ctrl,
+                    label: 'PVC 25',
+                    controller: pvc_25_ctrl,
                   ),
                   SizedBox(
                     height: 20,
@@ -334,9 +335,9 @@ class _Add_med extends State<Add_med> {
                         onTap: () {
                           // TODO:insirer stabilite
                           //pour renouvler l ajout de stabilité
-                          temperature_ctrl.clear();
-                          stabilite_ctrl.clear();
-                          flacon_ctrl.clear();
+                          verre_25_ctrl.clear();
+                          pvc_25_ctrl.clear();
+                          verre_4_ctrl.clear();
                           print('add stabilité');
                         },
                       )
@@ -361,11 +362,28 @@ class _Add_med extends State<Add_med> {
                 //ajout de med
                 if (med_modif == null) {
                   //ajouter un medicament
-                  dbmanager.insertMedicament(new Medicament(
+                  int res = await dbmanager.insertMedicament(new Medicament(
                       nom_med_ctrl.text,
                       double.parse(qte_disponible_ctrl.text),
                       double.parse(volum_flcn_ctrl.text)));
-                  // TODO: insertion details medicament
+                  print("id medicament $res");
+
+                  int res_det = await dbmanager
+                      .insertDetailMedicament(new Detail_medicament(
+                    res,
+                    nom_labo_ctrl.text,
+                    double.parse(presentation_ctrl.text),
+                    int.parse(prix_ctrl.text),
+                    double.parse(c_ini_ctrl.text),
+                    double.parse(c_min_ctrl.text),
+                    double.parse(c_max_ctrl.text),
+                    double.parse(volum_apr_praparation_ctrl.text),
+                    int.parse(verre_4_ctrl.text),
+                    int.parse(verre_25_ctrl.text),
+                    int.parse(pvc_25_ctrl.text),
+                  ));
+                  print("id detail $res_det");
+
                   //pour met les texte field null
                   nom_med_ctrl.clear();
                   nom_labo_ctrl.clear();
@@ -377,12 +395,13 @@ class _Add_med extends State<Add_med> {
                   c_max_ctrl.clear();
                   volum_apr_praparation_ctrl.clear();
                   prix_ctrl.clear();
-                  flacon_ctrl.clear();
-                  temperature_ctrl.clear();
-                  stabilite_ctrl.clear();
-                  setState(() {
+                  verre_4_ctrl.clear();
+                  verre_25_ctrl.clear();
+                  pvc_25_ctrl.clear();
+
+                  /* setState(() {
                     selected_item = Medicament.fromMap(meds.first).nom;
-                  });
+                  });*/
                 } else {
                   //modification
                   Medicament medUpdated = Medicament.fromMap({
@@ -392,6 +411,22 @@ class _Add_med extends State<Add_med> {
                     "id_medicament": updated_id,
                   });
                   await dbmanager.modifierMed(medUpdated);
+
+                  Detail_medicament medDetailUpdated =
+                      Detail_medicament.fromMap({
+                    "nom_labo": nom_labo_ctrl.text,
+                    "presentation": double.parse(presentation_ctrl.text),
+                    "prix": int.parse(prix_ctrl.text),
+                    "c_init": double.parse(c_ini_ctrl.text),
+                    "c_min": double.parse(c_min_ctrl.text),
+                    "c_max": double.parse(c_max_ctrl.text),
+                    "volume": double.parse(volum_apr_praparation_ctrl.text),
+                    "verre_4": int.parse(verre_4_ctrl.text),
+                    "verre_25": int.parse(verre_25_ctrl.text),
+                    "PVC_25": int.parse(pvc_25_ctrl.text),
+                    "FKmedId": updated_id,
+                  });
+                  await dbmanager.modifierDetailMed(medDetailUpdated);
                   //pour met les texte field null
                   nom_med_ctrl.clear();
                   nom_labo_ctrl.clear();
@@ -403,9 +438,9 @@ class _Add_med extends State<Add_med> {
                   c_max_ctrl.clear();
                   volum_apr_praparation_ctrl.clear();
                   prix_ctrl.clear();
-                  flacon_ctrl.clear();
-                  temperature_ctrl.clear();
-                  stabilite_ctrl.clear();
+                  verre_4_ctrl.clear();
+                  verre_25_ctrl.clear();
+                  pvc_25_ctrl.clear();
                   //mettre medupdated null a lafin de procuss
                   med_modif = null;
                   updated_id = null;

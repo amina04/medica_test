@@ -3,6 +3,7 @@ import 'package:medica/controller/calcul_step2_controller.dart';
 import 'package:medica/main.dart';
 import 'package:medica/model/database.dart';
 import 'package:medica/model/model_tableaux/medicament.dart';
+import 'package:medica/model/model_tableaux/poches.dart';
 import '../constantes.dart';
 import 'package:medica/widgets_sp%C3%A9cifiques/TextFieldmedica.dart';
 
@@ -22,6 +23,21 @@ class _Step2State extends State<Step2> {
       String currency = Medicament.fromMap(meds[i]).nom;
       var newItem = DropdownMenuItem(
         child: Text(currency),
+        value: currency,
+      );
+      dropdownitems.add(newItem);
+    }
+    return dropdownitems;
+  }
+
+  List<DropdownMenuItem> getDropDownItemPoche() {
+    List<DropdownMenuItem<int>> dropdownitems = [];
+    for (int i = 0; i < poche_list.length; i++) {
+      //  extrait le nom de chaque objet comme dans list screen
+
+      int currency = Poches.fromMap(poche_list[i]).volume_poche;
+      var newItem = DropdownMenuItem(
+        child: Text(currency.toString()),
         value: currency,
       );
       dropdownitems.add(newItem);
@@ -82,15 +98,30 @@ class _Step2State extends State<Step2> {
         ),
         Row(
           children: <Widget>[
-            // TODO:  drop down du presentation va remplis automatiquement quand on choisit le médicament
             Text(
-              'Présentation : ',
+              'Volume du poche : ',
               style: klabelTextStyle,
             ),
             SizedBox(
               width: 10.0,
             ),
-            DropdownButton<String>(items: null, onChanged: null),
+            FutureBuilder(
+              future: dbmanager.getAllPoches(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return DropdownButton<int>(
+                    items: getDropDownItemPoche(),
+                    value: selected_item_poche,
+                    onChanged: (value) {
+                      setState(() {
+                        selected_item_poche = value;
+                      });
+                    },
+                  );
+                }
+                return new CircularProgressIndicator();
+              },
+            ),
           ],
         ),
       ],

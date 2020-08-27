@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medica/controller/calcul_step2_controller.dart';
 import 'package:medica/controller/fonctions_calculs.dart';
 import 'package:medica/model/model_tableaux/patient.dart';
 import '../constantes.dart';
@@ -134,6 +135,8 @@ class _Step3State extends State<Step3> {
                 height = 180;
                 weight = 60;
                 surface_coporelle_ctrl.clear();
+                posologie_ctrl.clear();
+                reduction_ctrl.clear();
               });
             }),
       ],

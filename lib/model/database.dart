@@ -93,12 +93,14 @@ class Dbmedica {
     await db.execute(
       "CREATE TABLE $tableMed($columnId_med INTEGER PRIMARY KEY , $columnNom TEXT , $columnQte_disponible REAL , $columnVolume_flacon REAL)",
     );
-    debugPrint('table OnCreate');
-/*    debugPrint('medicament OnCreate');
+    debugPrint('table  medicament OnCreate');
+
     //table details medicament
     await db.execute(
-      "CREATE TABLE $tabledetailMed( $columnNom_labo TEXT,$columnPresenatation REAL,$columnPrix INTEGER,$columnCni REAL,$columnCmin REAL,$columnCmax REAL, $columnVolume_apr_pre REAL,$column_verre_4 INTEGER,$column_verre_25 INTEGER,$column_PVC_25 INTEGER,$FKmedId INTEGER, FOREIGN KEY($FKmedId ) REFERENCES $tableMed($columnId_med) ON DELETE CASCADE)",
+      "CREATE TABLE $tabledetailMed($columnNom_labo TEXT,$columnPresenatation REAL,$columnPrix INTEGER,$columnCni REAL,$columnCmin REAL,$columnCmax REAL, $columnVolume_apr_pre REAL,$column_verre_4 INTEGER,$column_verre_25 INTEGER,$column_PVC_25 INTEGER,$FKmedId INTEGER, FOREIGN KEY($FKmedId ) REFERENCES $tableMed($columnId_med) ON DELETE CASCADE)",
     );
+    debugPrint(' detail medicament OnCreate');
+    /*
     //table solution
     await db.execute(
       "CREATE TABLE $tablesolution($columnIdSolution INTEGER PRIMARY KEY autoincrement,$columnDatePreparation DATE,$columnPosologie REAL,$columnReduction INTEGER,$columnDoseAdministrer REAL,$columnVolumeFinale REAL,$FKmedId  INTEGER, FOREIGN KEY($FKmedId ) REFERENCES $tableMed($columnId_med) ON DELETE CASCADE,$FKpoche INTEGER, FOREIGN KEY($FKpoche) REFERENCES $tablePoches($columnPoche) ON DELETE CASCADE,$FKpatientId INTEGER, FOREIGN KEY($FKpatientId) REFERENCES $tablepatient($columnIdPatient) ON DELETE CASCADE)",
@@ -112,11 +114,11 @@ class Dbmedica {
     await db.execute(
       "CREATE TABLE $tablepatient($columnIdPatient INTEGER PRIMARY KEY autoincrement,$columnNom_patient TEXT, $columnPrenom_patient TEXT,$columnTaille INTEGER,$columnPoids INTEGER,$columnSurfaceCoporelle REAL)",
     );
-    /*
+
     //table poches
     await db.execute(
-      "CREATE TABLE $tablePoches($columnPoche INTEGER PRIMARY KEY autoincrement,$columnVolumePoche REAL)",
-    ); */
+      "CREATE TABLE $tablePoches($columnPoche INTEGER PRIMARY KEY autoincrement,$columnVolumePoche INTEGER)",
+    );
   }
 
 //CRUD CREATE READ UPDATE DELETE
@@ -170,13 +172,21 @@ class Dbmedica {
         where: "$columnId_med = ?", whereArgs: [med.id_medicament]);
   }
 
-/*
   //==============================CRUD Details medicament2 ================================================================
 //insirer fonction
   Future<int> insertDetailMedicament(Detail_medicament det_med) async {
     var dbMedicament = await db;
+
     int res = await dbMedicament.insert("$tabledetailMed", det_med.toMap());
     return res;
+  }
+
+  Future<Detail_medicament> getMedDetail(int id) async {
+    var dbMedicament = await db;
+    var result = await dbMedicament
+        .rawQuery("SELECT * FROM $tabledetailMed WHERE $FKmedId =$id");
+    if (result.length == 0) return null;
+    return new Detail_medicament.fromMap(result.first);
   }
 
   //aficher tout les medicaments
@@ -195,14 +205,14 @@ class Dbmedica {
   }
 
   //modifier medicament
-  Future<int> modifierDetailMed(Medicament med) async {
+  Future<int> modifierDetailMed(Detail_medicament med) async {
     var dbMedicament = await db;
     return await dbMedicament
         //? veut dire que on le connait pas pour le moment
         .update(tabledetailMed, med.toMap(),
-            where: "$FKmedId = ?", whereArgs: [med.id]);
+            where: "$FKmedId = ?", whereArgs: [med.FKmedId]);
   }
-*/
+
   //==============================CRUD patient 3================================================================
 //insirer fonction
   Future<int> insertPatient(Patient pat) async {
@@ -254,6 +264,7 @@ class Dbmedica {
   }
 
 /*
+
   //==============================CRUD solution 4================================================================
 //insirer fonction
   Future<int> insertSolution(Solution sol) async {
@@ -285,7 +296,7 @@ class Dbmedica {
         .update(tablesolution, sol.toMap(),
             where: "$columnIdSolution = ?", whereArgs: [sol.id_solution]);
   }
-
+*/
   //==============================CRUD poches 5================================================================
 //insirer fonction
   Future<int> insertPoches(Poches poch) async {
@@ -295,7 +306,7 @@ class Dbmedica {
   }
 
   //aficher tout
-  Future<List> getAllPches() async {
+  Future<List> getAllPoches() async {
     var dbMedicament = await db;
     var result = await dbMedicament.rawQuery("SELECT * FROM $tablePoches");
     return result.toList();
@@ -318,6 +329,7 @@ class Dbmedica {
             where: "$columnPoche = ?", whereArgs: [poch.poche]);
   }
 
+/*
   //==============================CRUD calculs 6================================================================
 //insirer fonction
   Future<int> insertcalculs(Calculs cal) async {

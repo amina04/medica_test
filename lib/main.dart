@@ -15,18 +15,24 @@ import 'package:medica/view/list_med_screen.dart';
 import 'package:medica/view/menu.dart';
 import 'package:medica/view/medicament_details_screen.dart';
 
+import 'model/model_tableaux/détails_med.dart';
 import 'model/model_tableaux/patient.dart';
+import 'model/model_tableaux/poches.dart';
 import 'view/start.dart';
 
 List meds;
 List patient_list;
+List poche_list;
 //utilisée dans list view pour le item selectionner a le id de item
 Medicament med_det, med_modif, med_search;
+Detail_medicament medi_detail_det;
 Patient patient_det, patient_search;
+
 int selected_id;
 int selected_id_patient;
 int updated_id;
 String selected_item = null;
+int selected_item_poche = null;
 int height = 180;
 int weight = 60;
 void main() async {
@@ -70,10 +76,16 @@ void main() async {
     print("medicament id: ${med.id_medicament}");
   }
 */
+  int save1 = await dbmanager.insertPoches(new Poches(250));
+  print('poche $save1');
+  int save2 = await dbmanager.insertPoches(new Poches(500));
+  print('poche $save2');
 
   meds = await dbmanager.getAllMed();
   patient_list = await dbmanager.getAllpatient();
+  poche_list = await dbmanager.getAllPoches();
   //med_det = await dbmanager.getMed(selected_id);
+
   FlutterError.onError = (FlutterErrorDetails details) {
     FlutterError.dumpErrorToConsole(details);
     if (kReleaseMode) exit(1);

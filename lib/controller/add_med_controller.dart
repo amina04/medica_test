@@ -15,9 +15,9 @@ final c_min_ctrl = TextEditingController();
 final c_max_ctrl = TextEditingController();
 final volum_apr_praparation_ctrl = TextEditingController();
 final prix_ctrl = TextEditingController();
-final flacon_ctrl = TextEditingController();
-final temperature_ctrl = TextEditingController();
-final stabilite_ctrl = TextEditingController();
+final verre_4_ctrl = TextEditingController();
+final verre_25_ctrl = TextEditingController();
+final pvc_25_ctrl = TextEditingController();
 
 class _add_med_ctrlState extends State<add_med_ctrl> {
   @override
@@ -33,9 +33,9 @@ class _add_med_ctrlState extends State<add_med_ctrl> {
     c_max_ctrl.dispose();
     volum_apr_praparation_ctrl.dispose();
     prix_ctrl.dispose();
-    flacon_ctrl.dispose();
-    temperature_ctrl.dispose();
-    stabilite_ctrl.dispose();
+    verre_4_ctrl.dispose();
+    verre_25_ctrl.dispose();
+    pvc_25_ctrl.dispose();
 
     super.dispose();
   }

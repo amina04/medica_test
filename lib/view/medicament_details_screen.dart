@@ -27,6 +27,16 @@ class _Detail_med extends State<Detail_med> {
   String nom_medicament = med_det.nom;
   double volume_flcn = med_det.volume_flacon;
   double qte_disponible = med_det.qte_disponible;
+  String nom_labo = medi_detail_det.nom_labo;
+  double presentation = medi_detail_det.presentation;
+  int prix = medi_detail_det.prix;
+  double c_init = medi_detail_det.c_init;
+  double c_min = medi_detail_det.c_min;
+  double c_max = medi_detail_det.c_max;
+  double volume = medi_detail_det.volume;
+  int verre_4 = medi_detail_det.verre_4;
+  int verre_25 = medi_detail_det.verre_25;
+  int pvc_25 = medi_detail_det.PVC_25;
   // TODO:remplir les autres a partire tableau med_detail
   @override
   Widget build(BuildContext context) {
@@ -56,6 +66,20 @@ class _Detail_med extends State<Detail_med> {
             ),
           ),
           Container(
+            child: Column(
+              children: <Widget>[
+                Text(
+                  ' Nom de laboratoire :',
+                  style: klabeladdMedStyle,
+                ),
+                Text(
+                  "$nom_labo",
+                  style: kresultliststyle,
+                ),
+              ],
+            ),
+          ),
+          Container(
             padding: EdgeInsets.symmetric(vertical: 15.0),
             child: Column(
               children: <Widget>[
@@ -64,11 +88,7 @@ class _Detail_med extends State<Detail_med> {
                   style: klabeladdMedStyle,
                 ),
                 Text(
-                  'Flacon de 20mg/1ml ',
-                  style: kresultliststyle,
-                ),
-                Text(
-                  'Flacon de 80mg/4ml ',
+                  'Flacon de $presentation mg/1ml ',
                   style: kresultliststyle,
                 ),
               ],
@@ -119,7 +139,7 @@ class _Detail_med extends State<Detail_med> {
                       style: ksubtitleliststyle,
                     ),
                     Text(
-                      '20 mg/ml',
+                      '$c_init mg/ml',
                       style: kresultliststyle,
                     ),
                   ],
@@ -131,7 +151,7 @@ class _Detail_med extends State<Detail_med> {
                       style: ksubtitleliststyle,
                     ),
                     Text(
-                      '0.3 mg/ml',
+                      '$c_min mg/ml',
                       style: kresultliststyle,
                     ),
                   ],
@@ -143,7 +163,7 @@ class _Detail_med extends State<Detail_med> {
                       style: ksubtitleliststyle,
                     ),
                     Text(
-                      '0.75 mg/ml',
+                      '$c_max mg/ml',
                       style: kresultliststyle,
                     ),
                   ],
@@ -160,7 +180,7 @@ class _Detail_med extends State<Detail_med> {
                   style: klabeladdMedStyle,
                 ),
                 Text(
-                  '20 ml',
+                  '$volume ml',
                   style: kresultliststyle,
                 ),
               ],
@@ -175,7 +195,7 @@ class _Detail_med extends State<Detail_med> {
                   style: klabeladdMedStyle,
                 ),
                 Text(
-                  '100 DA',
+                  '$prix DA',
                   style: kresultliststyle,
                 ),
               ],
@@ -194,7 +214,7 @@ class _Detail_med extends State<Detail_med> {
                   style: ksubtitleliststyle,
                 ),
                 Text(
-                  ' 48 heures',
+                  ' $verre_4 heures',
                   style: kresultliststyle,
                 ),
                 Text(
@@ -202,7 +222,7 @@ class _Detail_med extends State<Detail_med> {
                   style: ksubtitleliststyle,
                 ),
                 Text(
-                  ' 8 heures',
+                  ' $verre_25 heures',
                   style: kresultliststyle,
                 ),
                 Text(
@@ -210,7 +230,7 @@ class _Detail_med extends State<Detail_med> {
                   style: ksubtitleliststyle,
                 ),
                 Text(
-                  ' 72 heures',
+                  '$pvc_25 heures',
                   style: kresultliststyle,
                 ),
               ],
@@ -238,6 +258,19 @@ class _Detail_med extends State<Detail_med> {
                   nom_med_ctrl.text = nom_medicament;
                   volum_flcn_ctrl.text = volume_flcn.toString();
                   qte_disponible_ctrl.text = qte_disponible.toString();
+
+                  nom_labo_ctrl.text = nom_labo.toString();
+
+                  presentation_ctrl.text = presentation.toString();
+                  c_ini_ctrl.text = c_init.toString();
+                  c_min_ctrl.text = c_min.toString();
+                  c_max_ctrl.text = c_max.toString();
+                  volum_apr_praparation_ctrl.text = volume.toString();
+                  prix_ctrl.text = prix.toString();
+                  verre_4_ctrl.text = verre_4.toString();
+                  verre_25_ctrl.text = verre_25.toString();
+                  pvc_25_ctrl.text = pvc_25.toString();
+
                   med_modif = med_det;
                   updated_id = selected_id;
                 },
@@ -272,7 +305,7 @@ class _Detail_med extends State<Detail_med> {
                           //supprmer med
 
                           dbmanager.supprimerMed(selected_id);
-
+                          dbmanager.supprimerDetailMed(selected_id);
                           print('oui');
                           Navigator.pushNamed(context, List_med.id);
                         },
@@ -283,7 +316,6 @@ class _Detail_med extends State<Detail_med> {
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () {
-                            print('non');
                             //pour revenir au page
                             Navigator.pop(context);
                           })

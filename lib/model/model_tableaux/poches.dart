@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Poches {
   //les colones de table student
   int _poche;
-  double _volume_poche;
+  int _volume_poche;
 
   //un constructeur pour remplir le table
   Poches(
@@ -16,7 +16,7 @@ class Poches {
 
   //car les champs sont privée en met ca pour faciliter l acceder a eux
   int get poche => _poche;
-  double get volume_poche => _volume_poche;
+  int get volume_poche => _volume_poche;
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
